@@ -13,7 +13,7 @@ int main()
 }
 float calcularSupCirculo( float radio){
 float sup;
-sup=radio*3.14;
+sup=radio*radio*3.14;
 
 return sup;
 }
