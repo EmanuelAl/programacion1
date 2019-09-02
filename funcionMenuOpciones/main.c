@@ -2,9 +2,11 @@
 #include <stdlib.h>
 #include <conio.h>
 char menu();// declaro el prototipo de la funcion menu
+int sumar1(int a, int b);
 int main()
 {
     char seguir='s';
+    char salir='n';
 
     do{
 
@@ -27,6 +29,12 @@ case 'd':
     system("pause");
     break;
 case 'e':
+    printf("\n esta seguro que quiere salir? \n");
+    salir=getche();
+
+    if(salir=='s'){
+        return 0;
+    }
     system("pause");
     break;
 default:
@@ -59,3 +67,8 @@ char menu(){
     system("cls");
     return opcion;
 }
+int sumar1(int a, int b){
+    int suma;
+
+    suma=a+b;
+    return suma;
