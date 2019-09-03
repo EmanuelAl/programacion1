@@ -1,31 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-char menu();// declaro el prototipo de la funcion menu
-int sumar1(int a, int b);
+#include "alderete.h"
+//char menu();// declaro el prototipo de la funcion menu
+//int sumar1(int a, int b);
 int main()
 {
     char seguir='s';
     char salir='n';
+
+    int a=0;
+    int b=0;
+
+    printf("ingrese numero A: ");
+    scanf("%d",&a);
+    printf("ingrese numero B: ");
+    scanf("%d",&b);
 
     do{
 
     switch(menu()){//segun la opcion que devuelva la funcion menu
 case 'a':
     printf("\n usted eligio sumar \n");
+    printf("El resultado de A+B es: %d \n",sumar1(a,b));
     system("pause");
     break;
 
 case 'b':
      printf("\n usted eligio restar \n");
+     printf("El resultado de A-B es: %d \n",restar(a,b));
     system("pause");
     break;
 case 'c':
      printf("\n usted eligio multiplicar \n ");
+     printf("El resultado de A*B es: %d \n",multiplicar(a,b));
+
     system("pause");
     break;
 case 'd':
      printf("\n usted eligio dividir \n");
+     printf("El resultado de A/B es: %d \n",dividir(a,b));
     system("pause");
     break;
 case 'e':
@@ -52,7 +66,7 @@ default:
 
     return 0;
 }
-char menu(){
+/*char menu(){
      char opcion;
     system("cls");
     printf("-------------menu de opciones----------\n");
@@ -72,3 +86,5 @@ int sumar1(int a, int b){
 
     suma=a+b;
     return suma;
+
+}*/
