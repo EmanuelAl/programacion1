@@ -39,7 +39,7 @@ int factorizar(int a){
         fact=1;
     }if(a>0){
         for(int i=a;i>=1;i--){
-        fact=fact*i
+        fact=fact*i;
     }
     }
 
