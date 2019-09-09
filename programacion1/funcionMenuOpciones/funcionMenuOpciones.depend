@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1567646895 source:d:\tecnicatura programacion\programacion\programacion1\funcionmenuopciones\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"alderete.h"
+
+1567646895 source:d:\tecnicatura programacion\programacion\programacion1\funcionmenuopciones\alderete.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"alderete.h"
+
+1567646895 d:\tecnicatura programacion\programacion\programacion1\funcionmenuopciones\alderete.h
+
