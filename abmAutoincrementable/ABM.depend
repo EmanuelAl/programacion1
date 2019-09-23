@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1569198559 source:d:\tecnicatura programacion\programacion\programacion1\abm\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1569242033 source:c:\users\alumno\desktop\programacion1\abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+
+1569243965 source:c:\users\alumno\desktop\programacion1\abmautoincrementable\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"Alumno.h"
+
+1569245703 c:\users\alumno\desktop\programacion1\abmautoincrementable\alumno.h
+
+1569245703 source:c:\users\alumno\desktop\programacion1\abmautoincrementable\alumno.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"Alumno.h"
+

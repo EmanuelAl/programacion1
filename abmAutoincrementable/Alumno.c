@@ -2,124 +2,13 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
+#include "Alumno.h"
 
-#define TAM 10
-
-
-typedef struct
+void mostrarAlumno(eAlumno x,eCarrera carreras[],int tam)
 {
-    int dia;
-    int mes;
-    int anio;
-} eFecha;
-
-typedef struct
-{
-    int legajo;
-    char nombre[20];
-    int edad;
-    char sexo;
-    int nota1;
-    int nota2;
-    float promedio;
-    eFecha fechaIngreso;
-    int isEmpty;
-} eAlumno;
-
-void mostrarAlumno(eAlumno x);
-void mostrarAlumnos(eAlumno vec[], int tam);
-void ordenarAlumnos(eAlumno vec[], int tam);
-int menu();
-int buscarLibre(eAlumno alumnos[],int tam);
-void inicializarAlumnos(eAlumno alumnos[],int tam);
-
-
-eAlumno newAlumno(int legajo,char nombre[],int edad,char sexo,int nota1,int nota2,eFecha fecha);
-int buscarAlumno(int legajo,eAlumno alumnos[],int tam);
-int altaAlumno(eAlumno alumnos[], int tam);
-int altaAlumnoAuto(eAlumno alumnos[], int tam,int legajo);
-int bajaAlumno(eAlumno alumnos[], int tam);
-int modificarAlumno(eAlumno alumnos[], int tam);
-
-
-int hardcodearAlumnos(eAlumno alumnos[],int tam,int cant);
-
-int main()
-{
-
-
-    eAlumno lista[TAM];
-    int legajo= 20000;
-    char salir='n';
-
-    inicializarAlumnos(lista,TAM);
-
-
-
-    legajo= legajo + hardcodearAlumnos(lista,TAM, 10);//esta linea despues se va,solo es para testing
-
-    do
-    {
-        switch(menu())
-        {
-
-        case 1:
-            //printf("Alta alumnos \n");
-            //altaAlumno(lista,TAM);
-            if(altaAlumnoAuto(lista,TAM,legajo)){//si legajo devuelve true osea 1 se hace lo que esta dentro dela condicion.
-                legajo++;
-            }
-
-            //aca ya el alta alumno
-            break;
-
-        case 2:
-            bajaAlumno(lista,TAM);
-            //printf("Baja alumnos \n");
-            //aca ya el alta alumno
-            break;
-
-        case 3:
-            //printf("Modificar alumnos \n");
-            modificarAlumno(lista,TAM);
-            break;
-
-        case 4:
-            mostrarAlumnos(lista,TAM);
-            //
-            break;
-
-        case 5:
-           // printf("Ordenar alumnos \n");
-            ordenarAlumnos(lista,TAM);
-            break;
-        case 6:
-            printf("Informes \n");
-            //
-            break;
-
-        case 7:
-            printf("Confirma salir?¿ \n");
-            fflush(stdin);
-            salir=getchar();
-            //
-            break;
-
-        default:
-            printf("Opcion invalida\n");
-
-        }
-        system("pause");
-    }
-    while(salir =='n');
-
-
-    return 0;
-}
-
-void mostrarAlumno(eAlumno x)
-{
-    printf("  %d  %10s  %d     %c      %d   %d      %.2f   %02d/%02d/%d\n",
+    char descCarrera[20];
+    cargarDescCarrera(x.idCarrera,carreras,tam,descCarrera);
+    printf("  %d  %10s  %d     %c      %d   %d      %.2f   %02d/%02d/%d    %s\n",
            x.legajo,
            x.nombre,
            x.edad,
@@ -129,10 +18,11 @@ void mostrarAlumno(eAlumno x)
            x.promedio,
            x.fechaIngreso.dia,
            x.fechaIngreso.mes,
-           x.fechaIngreso.anio);
+           x.fechaIngreso.anio,
+           descCarrera);
 }
 
-void mostrarAlumnos(eAlumno vec[], int tam)
+void mostrarAlumnos(eAlumno vec[],eCarrera carreras[], int tamC)
 {
     int flag=0;
     system("cls");
@@ -178,25 +68,7 @@ void ordenarAlumnos(eAlumno vec[], int tam)
 
 
 }
-int menu()
-{
 
-    int opcion;
-    system("cls");
-    printf("menu de opciones\n\n");
-    printf("1-Alta alumno\n");
-    printf("2-Baja alumno\n");
-    printf("3-Modificar alumno\n");
-    printf("4-Listar alumno\n");
-    printf("5-Ordenar alumno\n");
-    printf("6-Informes \n");
-    printf("7-Salir \n");
-    printf("Ingrese opcion :\n");
-    scanf("%d",&opcion);
-
-    return opcion;
-
-}
 
 void inicializarAlumnos(eAlumno alumnos[],int tam)
 {
@@ -301,14 +173,14 @@ int altaAlumno(eAlumno alumnos[], int tam)
             printf("Ingrese fecha ingreso: dd/mm/aaaa ");
             scanf("%d/%d/%d", &fecha.dia, &fecha.mes, &fecha.anio);
 
-            alumnos[indice]=newAlumno(legajo,nombre,edad,sexo,nota1,nota2,fecha);
+            alumnos[indice]=newAlumno(legajo,nombre,edad,sexo,nota1,nota2,fecha,idCarrera);
             todoOk=1;
         }
     }
     return todoOk;
 
 }
-eAlumno newAlumno(int legajo,char nombre[],int edad,char sexo,int nota1,int nota2,eFecha fecha)
+eAlumno newAlumno(int legajo,char nombre[],int edad,char sexo,int nota1,int nota2,eFecha fecha,int idCarrera)
 {
 
     eAlumno nuevoAlumno;
@@ -321,6 +193,7 @@ eAlumno newAlumno(int legajo,char nombre[],int edad,char sexo,int nota1,int nota
     nuevoAlumno.promedio =(nota1 +nota2)/2;
     nuevoAlumno.fechaIngreso =fecha;
     nuevoAlumno.isEmpty=0;
+    nuevoAlumno.idCarrera=idCarrera;
 
     return nuevoAlumno;
 }
@@ -480,6 +353,7 @@ int altaAlumnoAuto(eAlumno alumnos[], int tam,int legajo)
 }
 int hardcodearAlumnos(eAlumno alumnos[],int tam,int cant){
 
+
     int cont=0;
     eAlumno listaAuxiliar[10] ={
      { 20000, "Juan", 21, 'm', 2, 10, 6,{12, 5, 2018}, 0},
@@ -505,3 +379,4 @@ int hardcodearAlumnos(eAlumno alumnos[],int tam,int cant){
     return cont;
 
 }
+
