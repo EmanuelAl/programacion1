@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
+#include <string.h>
 
 #define TAM 1
 
@@ -32,11 +34,11 @@ int buscarLibre(eAlumno alumnos[],int tam);
 void inicializarAlumnos(eAlumno alumnos[],int tam);
 
 
-eAlumno newAlumno(int legajo,char nombre[],int edad,char sexo,int nota1,int nota2,float promedio,eFecha fecha);
+eAlumno newAlumno(int legajo,char nombre[],int edad,char sexo,int nota1,int nota2,eFecha fecha);
 int buscarAlumno(int legajo,eAlumno alumnos[],int tam);
 int altaAlumno(eAlumno alumnos[], int tam);
-
 int bajaAlumno(eAlumno alumnos[], int tam);
+int modificarAlumno(eAlumno alumnos[], int tam);
 
 int main()
 {
@@ -54,47 +56,48 @@ int main()
         {
 
         case 1:
-            printf("Alta alumnos \n");
+            //printf("Alta alumnos \n");
             altaAlumno(lista,TAM);
             //aca ya el alta alumno
             break;
 
         case 2:
             bajaAlumno(lista,TAM);
-            printf("Baja alumnos \n");
+            //printf("Baja alumnos \n");
             //aca ya el alta alumno
             break;
 
         case 3:
-            printf("Modificar alumnos \n");
-            //aca ya el alta alumno
+            //printf("Modificar alumnos \n");
+            modificarAlumno(lista,TAM);
             break;
 
         case 4:
-            printf(" Listar alumnos \n");
-            //aca ya el alta alumno
+            mostrarAlumnos(lista,TAM);
+            //
             break;
 
         case 5:
-            printf("Ordenar alumnos \n");
-            //aca ya el alta alumno
+           // printf("Ordenar alumnos \n");
+            ordenarAlumnos(lista,TAM);
             break;
         case 6:
             printf("Informes \n");
-            //aca ya el alta alumno
+            //
             break;
 
         case 7:
             printf("Confirma salir?¿ \n");
             fflush(stdin);
             salir=getch();
-            //aca ya el alta alumno
+            //
             break;
 
         default:
-            printf("Opcion incorrecta\n");
+            printf("Opcion invalida\n");
 
         }
+        system("pause");
     }
     while(salir =='n');
 
@@ -120,19 +123,23 @@ void mostrarAlumno(eAlumno x)
 void mostrarAlumnos(eAlumno vec[], int tam)
 {
     int flag=0;
+    system("cls");
+    printf("**** Listado de Alumnos ****\n\n");
+
     printf(" Legajo Nombre Edad Sexo Nota1 Nota2 Promedio FIngreso\n");
     for(int i=0; i < tam; i++)
     {
         if( vec[i].isEmpty==0)
         {
             mostrarAlumno(vec[i]);
+            flag=1;
         }
-        flag=1;
+
     }
     if(flag==0)
     {
         system("cls");
-        printf("No hay alumnos que mostrar---");
+        printf("---No hay alumnos que mostrar---");
     }
     printf("\n\n");
 }
@@ -146,7 +153,7 @@ void ordenarAlumnos(eAlumno vec[], int tam)
     {
         for(int j= i+1; j <tam; j++)
         {
-            if( vec[i].legajo > vec[j].legajo)
+            if( vec[i].legajo > vec[j].legajo && vec[i].isEmpty==0 && vec[j].isEmpty==0)//ordeno de menor a mayor por legajo y pregunto si esta o no vacio
             {
                 auxAlumno = vec[i];
                 vec[i] = vec[j];
@@ -184,7 +191,6 @@ void inicializarAlumnos(eAlumno alumnos[],int tam)
 
     for(int i=0; i<tam; i++)
     {
-
         alumnos[i].isEmpty=1;
     }
 
@@ -198,8 +204,7 @@ int buscarLibre(eAlumno alumnos[],int tam)
     {
         if(alumnos[i].isEmpty==1)
         {
-
-            indice==i;
+            indice=i;
             break;//para que frene en el primer lugar libre que encuentra
         }
 
@@ -214,7 +219,7 @@ int buscarAlumno(int legajo,eAlumno alumnos[],int tam)
     {
         if(alumnos[i].isEmpty == 0 && alumnos[i].legajo == legajo)// cero significa que existe
         {
-            indice==i;//me devuelve el indice donde esta el alumno en el vector de alumnos
+            indice=i;//me devuelve el indice donde esta el alumno en el vector de alumnos
             break;//para que frene cuando lo encontro
         }
 
@@ -235,19 +240,21 @@ int altaAlumno(eAlumno alumnos[], int tam)
     char sexo;
     char nombre[20];
     eFecha fecha;
-    float promedio;
-    indice = buscarLibre(alumnos,tam);
 
-    printf("*****alta alumno ********");
+
     system("cls");
+    printf("***** alta alumno ******");
+
+     indice = buscarLibre(alumnos,tam);
+
     if(indice == -1)
     {
-        printf("Sistema Completo.No se pueden agregar mas alumnos\n ");
+        printf("\nSistema Completo.No se pueden agregar mas alumnos\n ");
         system("pause");
     }
     else
     {
-        printf("ingrese legajo: ");
+        printf("\ningrese legajo: ");
         scanf("%d",&legajo);
 
         esta=buscarAlumno(legajo, alumnos, tam);//si lo encuentra le cargara a "esta" con el indice donde esta ubicado el alumno
@@ -255,7 +262,7 @@ int altaAlumno(eAlumno alumnos[], int tam)
         if (esta != -1)
         {
 
-            printf("legajo ya registrado\n");
+            printf("\nlegajo ya registrado\n");
             mostrarAlumno(alumnos[esta]);
         }
         else
@@ -263,9 +270,6 @@ int altaAlumno(eAlumno alumnos[], int tam)
             printf("Ingrese nombre: ");
             fflush(stdin);
             gets(nombre);
-
-            printf("Ingrese legajo:");
-            scanf("%d", &legajo);
 
             printf("Ingrese edad:");
             scanf("%d", &edad);
@@ -285,14 +289,14 @@ int altaAlumno(eAlumno alumnos[], int tam)
             printf("Ingrese fecha ingreso: dd/mm/aaaa ");
             scanf("%d/%d/%d", &fecha.dia, &fecha.mes, &fecha.anio);
 
-            eAlumno alumno=newAlumno(legajo,nombre,edad,sexo,nota1,nota2,promedio,fecha);
+            alumnos[indice]=newAlumno(legajo,nombre,edad,sexo,nota1,nota2,fecha);
             todoOk=1;
         }
     }
     return todoOk;
 
 }
-eAlumno newAlumno(int legajo,char nombre[],int edad,char sexo,int nota1,int nota2,float promedio,eFecha fecha)
+eAlumno newAlumno(int legajo,char nombre[],int edad,char sexo,int nota1,int nota2,eFecha fecha)
 {
 
     eAlumno nuevoAlumno;
@@ -317,6 +321,9 @@ int bajaAlumno(eAlumno alumnos[], int tam)
     int legajo;
     char confirma='n';
 
+    system("cls");
+    printf("**** Baja Alumno ****\n\n");
+
     printf(" ingrese legajo : ");
     scanf("%d",&legajo);
 
@@ -325,26 +332,26 @@ int bajaAlumno(eAlumno alumnos[], int tam)
     if( indice==-1)
     {
         printf(" No existe el alumno ");
-
+        system("pause");
     }
     else
     {
-        mostrarAlumno(alumnos[indice]);
+        mostrarAlumno(alumnos[indice]);//mostramos el alumno en la posicion que esta
         printf("confirma eliminacion ? :");
         fflush(stdin);
         confirma =getche();
 
         if(confirma=='s')
         {
-            alumnos.isEmpty=1;
-            printf("se ha eliminado alumno ");
+            alumnos[indice].isEmpty=1;
+            printf("\n\nSe ha eliminado el alumno\n");
             todoOk=1;
         }
         else
         {
-            printf("se ha cancelado la baja");
+            printf("\n\nSe ha cancelado la baja\n");
         }
-
+        system("pause");
     }
     return todoOk;
 
@@ -352,10 +359,57 @@ int bajaAlumno(eAlumno alumnos[], int tam)
 int modificarAlumno(eAlumno alumnos[], int tam){
 
     int todoOk=0;
+    int indice;
+    int legajo;
+    int nota;
+    int opcion;
 
+    system("cls");
+    printf("******modificar alumno*****\n");
 
+    printf("Ingrese nro de legajo: ");
+    scanf("%d",&legajo);
 
+    indice = buscarAlumno(legajo,alumnos,tam);
 
-    returno todoOk;
+    if(indice==-1){
+
+        printf("\nNo tenemos registrado ese legajo\n");
+        system("pause");
+    }else{
+        mostrarAlumno(alumnos[indice]);
+
+        printf("Modificar\n\n");
+        printf("Nota parcial 1\n");
+        printf("Nota parcial 2\n");
+
+        printf("Ingrese opcion:");
+        scanf("%d",&opcion);
+
+        if(opcion==1){
+
+            printf(" ingrese nota 1: \n ");
+            scanf("%d",&nota);
+
+            alumnos[indice].nota1=nota;
+            alumnos[indice].promedio= (float)(alumnos[indice].nota1+alumnos[indice].nota2) /2;
+            printf("Se actualizo la nota");
+            todoOk = 1;
+        }else if(opcion==2){
+
+            printf(" ingrese nota 2: \n ");
+            scanf("%d",&nota);
+
+            alumnos[indice].nota2=nota;
+            alumnos[indice].promedio= (float)(alumnos[indice].nota1+alumnos[indice].nota2) /2;
+            printf("Se actualizo la nota");
+            todoOk = 1;
+        }else{
+            printf(" No es una opcion valida! \n ");
+        }
+        system("pause");
+        }
+
+    return todoOk;
 
 }
