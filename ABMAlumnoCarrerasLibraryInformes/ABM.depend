@@ -65,3 +65,38 @@
 	"carrera.h"
 	"alumno.h"
 
+1569843253 source:c:\users\alumno\desktop\programacion1\abmalumnocarreraslibraryinformes\alumno.c
+	"alumno.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+
+1569843253 c:\users\alumno\desktop\programacion1\abmalumnocarreraslibraryinformes\alumno.h
+	"carrera.h"
+
+1569843253 c:\users\alumno\desktop\programacion1\abmalumnocarreraslibraryinformes\carrera.h
+
+1569843253 source:c:\users\alumno\desktop\programacion1\abmalumnocarreraslibraryinformes\carrera.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"carrera.h"
+
+1569853646 source:c:\users\alumno\desktop\programacion1\abmalumnocarreraslibraryinformes\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"carrera.h"
+	"alumno.h"
+	"almuerzo.h"
+	"comida.h"
+
+1569855344 c:\users\alumno\desktop\programacion1\abmalumnocarreraslibraryinformes\almuerzo.h
+	"comida.h"
+	"alumno.h"
+
+1569854242 c:\users\alumno\desktop\programacion1\abmalumnocarreraslibraryinformes\comida.h
+
