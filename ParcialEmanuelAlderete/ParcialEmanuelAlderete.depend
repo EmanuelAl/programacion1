@@ -1,0 +1,46 @@
+# depslib dependency file v1.0
+1570629249 source:c:\users\alumno\desktop\parcialemanuelalderete\color.c
+	<stdio.h>
+	<stdlib.h>
+	"color.h"
+
+1570629303 c:\users\alumno\desktop\parcialemanuelalderete\color.h
+
+1570629614 source:c:\users\alumno\desktop\parcialemanuelalderete\servicio.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"servicio.h"
+
+1570624362 c:\users\alumno\desktop\parcialemanuelalderete\servicio.h
+
+1570629486 source:c:\users\alumno\desktop\parcialemanuelalderete\main.c
+	<stdio.h>
+	<stdlib.h>
+	"servicio.h"
+	"marca.h"
+	"color.h"
+	"auto.h"
+
+1570630893 source:c:\users\alumno\desktop\parcialemanuelalderete\auto.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"marca.h"
+	"color.h"
+	"servicio.h"
+	"auto.h"
+
+1570624624 source:c:\users\alumno\desktop\parcialemanuelalderete\trabajo.c
+
+1570627130 c:\users\alumno\desktop\parcialemanuelalderete\marca.h
+
+1570630148 c:\users\alumno\desktop\parcialemanuelalderete\auto.h
+
+1570629521 source:c:\users\alumno\desktop\parcialemanuelalderete\marca.c
+	<stdio.h>
+	<stdlib.h>
+	"marca.h"
+
