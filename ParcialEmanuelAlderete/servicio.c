@@ -11,7 +11,7 @@
  * \return 0 si no cargo el vector, sino devuelve la cantidad cargada
  *
  */
-int hardcodearServicio( eServicio vec[], int tam, int cantidad)
+int hardcodearServicios( eServicio vec[], int tam, int cantidad)
 {
     int cont = 0;
 
@@ -34,6 +34,14 @@ int hardcodearServicio( eServicio vec[], int tam, int cantidad)
 
     return cont;
 }
+void listarServicios(eServicio servicios[], int tam){
+    printf(" Id   Descripcion    precio \n\n");
+    for(int i=0; i < tam; i++){
+        mostrarServicio( servicios[i]);
+    }
+    printf("\n");
+}
+
 void mostrarServicios(eServicio servicios[], int tam){
     printf(" Id   Descripcion    precio \n\n");
     for(int i=0; i < tam; i++){

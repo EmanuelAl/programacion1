@@ -1,43 +1,43 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <conio.h>
+#include <string.h>
 #include "servicio.h"
 #include "marca.h"
 #include "color.h"
 #include "auto.h"
+#include "trabajo.h"
 
 #define AUTO 5
 #define MARCA 5
 #define SERV 5
 #define COLOR 5
-typedef struct
-{
-    int dia;
-    int mes;
-    int anio;
-} eFecha;
-
-
-
-
-
-typedef struct
-{
-    int idTrabajo;
-    char patente[20];
-    int idServicio;
-    eFecha fecha;
-} eTrabajo;
+#define TRABAJO 5
 
 int menu();
 
 int main()
 {
-    int idAuto;
+
     eAuto autos[AUTO];
+    eTrabajo trabajos[TRABAJO];
     eMarca marcas[MARCA];
     eColor colores[COLOR];
+    eServicio servicios[SERV];
     char salir='n';
+     int idAuto;
+
+    inicializarAuto(autos,AUTO);
+    inicializarTrabajo(trabajos,TRABAJO);
+    //harcodeos
+    hardcodearColores(colores,COLOR,5);
+    hardcodearMarcas(marcas,MARCA,5);
+    hardcodearServicios(servicios,SERV,5);
+
+    idAuto= idAuto + hardcodearAutos(autos,AUTO);
+
+
+
 do
     {
         switch( menu())
@@ -50,11 +50,22 @@ do
             break;
 
         case 2:
+            if( estaCargado(autos,AUTO)==-1){
+                printf(" Sistema vacio. No se puede gestionar baja \n");
+            }else{
+                 bajaAuto(autos,AUTO);
+            }
+
 
             break;
 
         case 3:
+             if( estaCargado(autos,AUTO)==-1){
+                printf(" Sistema vacio. No se puede gestionar Modificar \n");
+            }else{
+                 modificarAuto(autos,AUTO,marcas,MARCA,colores,COLOR);
 
+            }
             break;
 
         case 4:
@@ -62,15 +73,15 @@ do
             break;
 
         case 5:
-
+                listarMarcas(marcas,MARCA);
             break;
 
         case 6:
-
+                listarColores(colores,COLOR);
             break;
 
         case 7:
-
+                listarServicios(servicios,SERV);
             break;
 
         case 8:

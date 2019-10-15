@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
+#include <string.h>
 
 #include "color.h"
 /** \brief funcion para cargar el vector ingresado
@@ -35,6 +37,14 @@ int hardcodearColores( eColor vec[], int tam, int cantidad)
 
     return cont;
 }
+void listarColores(eColor color[], int tam){
+    printf(" Id   Descripcion\n\n");
+    for(int i=0; i < tam; i++){
+        mostrarColor( color[i]);
+    }
+    printf("\n");
+}
+
 void mostrarColores(eColor color[], int tam){
     printf(" Id   Descripcion\n\n");
     for(int i=0; i < tam; i++){
@@ -45,7 +55,7 @@ void mostrarColores(eColor color[], int tam){
 
 void mostrarColor(eColor color){
 
-    printf("  %d      %10s\n", color.idColor, color.nombreColor);
+    printf("  %d      %s\n", color.idColor, color.nombreColor);
 
 }
 int cargarDescColor(int id, eColor vec[], int tam, char desc[]){

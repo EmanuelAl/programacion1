@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
+#include <string.h>
 #include "marca.h"
 /** \brief funcion para cargar el vector ingresado
  *
@@ -33,6 +35,14 @@ int hardcodearMarcas( eMarca vec[], int tam, int cantidad)
 
     return cont;
 }
+void listarMarcas(eMarca marcas[], int tam){
+    printf(" Id   Descripcion\n\n");
+    for(int i=0; i < tam; i++){
+        mostrarMarca( marcas[i]);
+    }
+    printf("\n");
+}
+
 void mostrarMarcas(eMarca marcas[], int tam){
     printf(" Id   Descripcion\n\n");
     for(int i=0; i < tam; i++){
