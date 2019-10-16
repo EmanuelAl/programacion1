@@ -1,5 +1,7 @@
 #include "marca.h"
 #include "color.h"
+#ifndef AUTO_H_INCLUDED
+#define AUTO_H_INCLUDED
 typedef struct
 {
     int idAuto;
@@ -9,9 +11,21 @@ typedef struct
     int modelo;
     int isEmpty;
 } eAuto;
-/** \brief Funcion para cargar el vector analizado
+#endif
+
+/** \brief funcion para cargar el vector ingresado
  *
- * \param eAuto vec[] es el vector que va a ser cargado
+ * \param eAuto vec[] vector a ser cargado
+ * \param int tam es el tamaño del vector a ser cargado
+ * \param int cantidad la cantidad que cargaremos al vector
+ * \return 0 si no cargo el vector, sino devuelve la cantidad cargada
+ *
+ */
+
+int hardcodearAutos( eAuto vec[], int tam, int cantidad);
+/** \brief Funcion para inicializar al campo isEmpty con 1,en todos  los elementos del vector
+ *
+ * \param eAuto vec[] es el vector que va a ser inicializado
  * \param int tam es el tamaño  del vector ingresado
  *
  */
@@ -128,3 +142,13 @@ eAuto newAuto( int idAuto,
     int idMarca,
     int idColor,
     int modelo);
+
+/** \brief Funcion que ordena al vector por marca y patente
+ *
+ * \param eAuto vec[] vector que se ordenará
+ * \param int tam tamaño del vector
+ * \return no devuelve nada
+ *
+ */
+
+void ordenarAutosMarcaPatente( eAuto vec[], int tam);

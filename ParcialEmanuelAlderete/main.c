@@ -10,7 +10,7 @@
 
 #define AUTO 5
 #define MARCA 5
-#define SERV 5
+#define SERV 4
 #define COLOR 5
 #define TRABAJO 5
 
@@ -25,16 +25,17 @@ int main()
     eColor colores[COLOR];
     eServicio servicios[SERV];
     char salir='n';
-     int idAuto;
+     int idAuto=2005;
+     int idTrabajo=0;
 
     inicializarAuto(autos,AUTO);
     inicializarTrabajo(trabajos,TRABAJO);
     //harcodeos
     hardcodearColores(colores,COLOR,5);
     hardcodearMarcas(marcas,MARCA,5);
-    hardcodearServicios(servicios,SERV,5);
+    hardcodearServicios(servicios,SERV,4);
 
-    idAuto= idAuto + hardcodearAutos(autos,AUTO);
+    idAuto= idAuto + hardcodearAutos(autos,AUTO,5);
 
 
 
@@ -69,7 +70,8 @@ do
             break;
 
         case 4:
-
+                ordenarAutosMarcaPatente(autos,AUTO);
+                mostrarAutos(autos,AUTO);
             break;
 
         case 5:
@@ -85,9 +87,18 @@ do
             break;
 
         case 8:
-
+                if(altaTrabajo(trabajos,TRABAJO,idTrabajo,servicios,SERV,autos,AUTO))
+            {
+                idTrabajo++;
+            }
             break;
         case 9:
+
+              if( estaCargadoTrabajo(trabajos,TRABAJO)==-1){
+                printf(" Sistema vacio \n");
+            }else{
+                 listarTrabajos(trabajos,TRABAJO,servicios,SERV);
+            }
 
             break;
         case 10:
@@ -114,11 +125,11 @@ int menu()
     printf("1-Alta auto\n");
     printf("2-Baja auto\n");
     printf("3-Modificar auto\n");
-    printf("4-Listar Marcas\n");
-    printf("5-Listar colores\n");
-    printf("6-Listar servicios\n");
-    printf("7-Alta trabajo\n");
-    printf("8-Mostrar comidas\n\n");
+    printf("4-Listar autos\n");
+    printf("5-Listar Marcas\n");
+    printf("6-Listar colores\n");
+    printf("7-Listar servicios\n");
+    printf("8-Alta trabajo\n");
     printf("9-Listar trabajos \n\n");
     printf("10-Salir\n\n");
     printf("Ingrese opcion: ");

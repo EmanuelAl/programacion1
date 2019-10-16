@@ -10,7 +10,7 @@
 
 void listarTrabajos(eTrabajo trabajo[], int tam,eServicio servicio[],int tamS)
 {
-    printf(" Id    patente    idServicio      fecha  \n\n");
+    printf(" Id        patente    Servicio      fecha  \n\n");
     for(int i=0; i < tam; i++)
     {
         mostrarTrabajo( trabajo[i], servicio, tamS);
@@ -22,7 +22,7 @@ void mostrarTrabajos(eTrabajo trabajo[], int tam,eServicio servicio[],int tamS)
 {
     int flag = 0;
     system("cls");
-    printf(" Id    patente    Servicio      fecha  \n\n");
+    printf(" Id        patente    Servicio      fecha  \n\n");
     for(int i=0; i < tam; i++)
     {
         if( trabajo[i].isEmpty == 0)
@@ -52,7 +52,7 @@ int altaTrabajo(eTrabajo vec[], int tam,int idTrabajo,eServicio servicios[], int
     int todoOk = 0;
     int indice;
     char patente[20];
-    int yaIngresado;
+//    int yaIngresado;
     int idServicio;
     eFecha fecha;
 
@@ -73,7 +73,7 @@ int altaTrabajo(eTrabajo vec[], int tam,int idTrabajo,eServicio servicios[], int
         printf("Ingrese patente: ");
         fflush(stdin);
         gets(patente);
-        yaIngresado=buscarTrabajoPatente(patente,vec,tamAuto);
+        /*yaIngresado=buscarTrabajoPatente(patente,vec,tamAuto);
         while(yaIngresado==-1)
         {
 
@@ -82,12 +82,13 @@ int altaTrabajo(eTrabajo vec[], int tam,int idTrabajo,eServicio servicios[], int
             printf("Ingrese patente nuevamente: ");
             fflush(stdin);
             gets(patente);
-        }
+            system("cls");
+        }*/
 
         mostrarServicios(servicios,tamS);
         getNumeroIntentos(&idServicio,"Ingrese id de servicio: ","Error.Ingrese  ID correcto: \n",20000,20003,3);//validamos
         printf("Ingrese fecha dd/mm/aaaa: ");
-        scanf("%d/%d/%d", &fecha.dia, &fecha.mes, &fecha.anio);
+        scanf("%d %d %d", &fecha.dia, &fecha.mes, &fecha.anio);
 
 
         vec[indice] = newTrabajo(idTrabajo,patente,idServicio,fecha);
@@ -247,7 +248,7 @@ int buscarTrabajoPatente(char patente[], eTrabajo vec[], int tam)
 
     for(int i=0; i < tam; i++)
     {
-        if( (strcmp(vec[i].patente,patente))==0 && vec[i].isEmpty == 0)
+        if( strcmp(vec[i].patente,patente)==0 && vec[i].isEmpty == 0)
         {
             indice = i;
             break;

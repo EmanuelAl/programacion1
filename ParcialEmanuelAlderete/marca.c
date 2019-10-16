@@ -3,14 +3,7 @@
 #include <conio.h>
 #include <string.h>
 #include "marca.h"
-/** \brief funcion para cargar el vector ingresado
- *
- * \param eColor vec[] vector a ser cargado
- * \param int tam es el tamaño del vector a ser cargado
- * \param int cantidad la cantidad que cargaremos al vector
- * \return 0 si no cargo el vector, sino devuelve la cantidad cargada
- *
- */
+
 int hardcodearMarcas( eMarca vec[], int tam, int cantidad)
 {
     int cont = 0;

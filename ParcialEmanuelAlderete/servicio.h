@@ -1,9 +1,12 @@
+#ifndef SERVICIO_H_INCLUDED
+#define SERVICIO_H_INCLUDED
 typedef struct
 {
-    int id;
-    char descServicio[20];
+    int idServicio;
+    char descServicio[25];
     float precio;
 } eServicio;
+#endif
 /** \brief funcion para cargar el vector ingresado
  *
  * \param eServicio vec[] vector a ser cargado

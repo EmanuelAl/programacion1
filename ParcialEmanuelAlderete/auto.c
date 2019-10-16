@@ -36,7 +36,7 @@ int hardcodearAutos( eAuto vec[], int tam, int cantidad)
 }
 void listarAutos(eAuto autos[], int tam)
 {
-    printf(" Id   patente  idMarca   idColor  modelo  \n\n");
+    printf(" Id            patente  idMarca   idColor  modelo  \n\n");
     for(int i=0; i < tam; i++)
     {
         mostrarAuto( autos[i]);
@@ -46,7 +46,7 @@ void listarAutos(eAuto autos[], int tam)
 
 void mostrarAutos(eAuto autos[], int tam)
 {
-    printf(" Id   patente  idMarca   idColor  modelo  \n\n");
+    printf(" Id            patente  idMarca   idColor  modelo  \n\n");
     for(int i=0; i < tam; i++)
     {
         mostrarAuto( autos[i]);
@@ -57,7 +57,7 @@ void mostrarAutos(eAuto autos[], int tam)
 void mostrarAuto(eAuto aut)
 {
 
-    printf("  %d      %10s   %d    %d   %d \n", aut.idAuto, aut.patente,aut.idMarca,aut.idColor,aut.modelo);
+    printf("  %d      %10s   %d    %d      %d \n", aut.idAuto, aut.patente,aut.idMarca,aut.idColor,aut.modelo);
 
 }
 int altaAuto(int id,eAuto vec[],int tamAuto,eMarca marca[],int tamMarca,eColor color[],int tamColor)
@@ -285,5 +285,35 @@ void inicializarAuto(eAuto vec[], int tam)
     for(int i = 0; i < tam; i++)
     {
         vec[i].isEmpty = 1;
+    }
+}
+
+
+void ordenarAutosMarcaPatente( eAuto vec[], int tam){
+
+    eAuto aux;
+    int swap = 0;
+
+    for(int i=0; i < tam-1; i++){
+        for(int j = i +1; j < tam; j++){
+            // condicion para ordenar por MARCA ascendente
+            if( vec[i].idMarca>vec[j].idMarca && vec[i].isEmpty==0 && vec[j].isEmpty==0){
+                    swap = 1;
+            }
+            // SI TIENEN LA MISMA MARCA LOS ORDENO POR PATENTE ASCENDETE
+            else if(  vec[i].idMarca==vec[j].idMarca && strcmp(vec[i].patente,vec[j].patente)>0 && vec[i].isEmpty==0 && vec[j].isEmpty==0){
+
+                    swap = 1;
+            }
+            // SI ENTRO A ALGUNO DE LOS IF ANTERIORES ES PORQUE TENGO QUE SWAPEAR
+            if( swap ){
+
+                 aux = vec[i];
+                vec[i] = vec[j];
+                vec[j] = aux;
+            }
+
+            swap = 0;
+        }
     }
 }

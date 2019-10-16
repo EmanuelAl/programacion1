@@ -4,15 +4,6 @@
 #include <string.h>
 
 #include "color.h"
-/** \brief funcion para cargar el vector ingresado
- *
- * \param eColor vec[] vector a ser cargado
- * \param int tam es el tamaño del vector a ser cargado
- * \param int cantidad la cantidad que cargaremos al vector
- * \return 0 si no cargo el vector, sino devuelve la cantidad cargada
- *
- */
-
 int hardcodearColores( eColor vec[], int tam, int cantidad)
 {
     int cont = 0;
@@ -68,4 +59,5 @@ int cargarDescColor(int id, eColor vec[], int tam, char desc[]){
             break;
         }
     }
+    return todoOk;
 }
