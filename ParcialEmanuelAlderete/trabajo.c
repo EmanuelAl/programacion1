@@ -7,13 +7,26 @@
 #include "auto.h"
 #include "input.h"
 #include "trabajo.h"
+#include "marca.h"
+#include "color.h"
 
 void listarTrabajos(eTrabajo trabajo[], int tam,eServicio servicio[],int tamS)
 {
+   int flag = 0;
+    system("cls");
     printf(" Id        patente    Servicio      fecha  \n\n");
     for(int i=0; i < tam; i++)
     {
-        mostrarTrabajo( trabajo[i], servicio, tamS);
+        if( trabajo[i].isEmpty == 0)
+        {
+            mostrarTrabajo( trabajo[i], servicio, tamS);
+            flag = 1;
+        }
+
+    }
+    if( flag == 0)
+    {
+        printf("\nNo hay trabajos que mostrar\n");
     }
     printf("\n");
 }
@@ -47,13 +60,13 @@ void mostrarTrabajo(eTrabajo trabajo,eServicio servicio[],int tamS)
 
 }
 
-int altaTrabajo(eTrabajo vec[], int tam,int idTrabajo,eServicio servicios[], int tamS,eAuto autos[],int tamAuto)
+int altaTrabajo(eTrabajo vec[], int tam,int idTrabajo,eServicio servicios[], int tamS,eAuto autos[],int tamAuto,eMarca marca[],int tamMarca,eColor color[],int tamColor,eCliente clientes[],int tamCliente)
 {
     int todoOk = 0;
     int indice;
     char patente[20];
-//    int yaIngresado;
-    int idServicio;
+   int yaIngresado;
+    int idServicio=0;
     eFecha fecha;
 
     system("cls");
@@ -69,11 +82,12 @@ int altaTrabajo(eTrabajo vec[], int tam,int idTrabajo,eServicio servicios[], int
     else
     {
 
-        mostrarAutos(autos,tamAuto);
+        mostrarAutos(autos,tamAuto,color,tamColor,marca,tamMarca,clientes,tamCliente);
         printf("Ingrese patente: ");
         fflush(stdin);
         gets(patente);
-        /*yaIngresado=buscarTrabajoPatente(patente,vec,tamAuto);
+        //yaIngresado=buscarTrabajoPatente(patente,vec,tam);
+        yaIngresado=buscarAutoPatente(patente,autos,tamAuto);
         while(yaIngresado==-1)
         {
 
@@ -83,7 +97,8 @@ int altaTrabajo(eTrabajo vec[], int tam,int idTrabajo,eServicio servicios[], int
             fflush(stdin);
             gets(patente);
             system("cls");
-        }*/
+             yaIngresado=buscarAutoPatente(patente,autos,tamAuto);
+        }
 
         mostrarServicios(servicios,tamS);
         getNumeroIntentos(&idServicio,"Ingrese id de servicio: ","Error.Ingrese  ID correcto: \n",20000,20003,3);//validamos
@@ -148,6 +163,7 @@ eTrabajo newTrabajo( int idTrabajo,
     eTrabajo aux;
     aux.idTrabajo=idTrabajo;
     aux.idServicio=idServicio;
+    aux.fecha=fecha;
     strcpy(aux.patente,patente);
     aux.isEmpty=0;
 
@@ -262,4 +278,31 @@ void inicializarTrabajo(eTrabajo vec[], int tam)
     {
         vec[i].isEmpty = 1;
     }
+}
+void  mostrarImporteTotal(eTrabajo vec[], int tam,eServicio servicios[], int tamS,eAuto autos[],int tamAuto,eCliente clientes[],int tamCliente)
+{
+
+    int idCliente;
+    float total;
+    mostrarClientes(clientes,tamCliente);
+    //printf("Ingrese  id Titular:\n");
+    //scanf("%d",&idCliente);
+    getNumeroIntentos(&idCliente,"Ingrese  id Titular:\n","Error.Ingrese bien el ID titular",3000,4000,3);
+
+    for(int i=0;i<tamAuto;i++){//recorre vector aautos
+        for(int j=0;j<tam;j++){//recorre vector trabajos
+            for(int y=0;y<tamS;y++){//recorre vector servicios
+                if(autos[i].idCliente==idCliente && autos[i].isEmpty==0){
+                    if(strcmp(autos[i].patente,vec[j].patente)==0 && vec[j].isEmpty==0){
+
+                        if(vec[j].idServicio==servicios[y].idServicio){
+                            total=total + servicios[y].precio;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+    printf("El importe total del titular ingresado por id es : %f \n",total);
 }

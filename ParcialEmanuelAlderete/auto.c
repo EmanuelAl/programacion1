@@ -8,6 +8,7 @@
 #include "servicio.h"
 #include "auto.h"
 #include "input.h"
+#include  "cliente.h"
 
 int hardcodearAutos( eAuto vec[], int tam, int cantidad)
 {
@@ -15,11 +16,11 @@ int hardcodearAutos( eAuto vec[], int tam, int cantidad)
 
     eAuto aux[]=
     {
-        {2000,"123ABC",1000,5000,1997},
-        {2001,"252HGF",1001,5001,1999},
-        {2002,"555GJK",1002,5002,1874},
-        {2003,"669BCA",1003,5003,2000},
-        {2004,"122RTF",1004,5004,2007}
+        {2000,"123ABC",3000,1000,5000,1997},
+        {2001,"252HGF",3001,1001,5001,1999},
+        {2002,"555GJK",3002,1002,5002,1874},
+        {2003,"669BCA",3003,1003,5003,2000},
+        {2004,"122RTF",3004,1004,5004,2007}
     };
 
     if( cantidad <= 5 && tam >= cantidad)
@@ -34,33 +35,53 @@ int hardcodearAutos( eAuto vec[], int tam, int cantidad)
 
     return cont;
 }
-void listarAutos(eAuto autos[], int tam)
+void listarAutos(eAuto autos[], int tam,eColor colores[],int tamColor,eMarca marcas[],int tamMarca,eCliente clientes[],int tamCliente)
 {
-    printf(" Id            patente  idMarca   idColor  modelo  \n\n");
+     int flag=0;
+    system("cls");
+    printf(" Id            patente   titular   Marca           Color     modelo  \n\n");
     for(int i=0; i < tam; i++)
-    {
-        mostrarAuto( autos[i]);
+    {   if(autos[i].isEmpty==0){
+        mostrarAuto( autos[i],colores,tamColor,marcas,tamMarca,clientes,tamCliente);
+        flag=1;
+            }
     }
-    printf("\n");
+    if( flag == 0)
+        {
+            printf("\nNo hay trabajos que mostrar\n");
+        }
+      printf("\n");
 }
 
-void mostrarAutos(eAuto autos[], int tam)
+void mostrarAutos(eAuto autos[], int tam,eColor colores[],int tamColor,eMarca marcas[],int tamMarca,eCliente clientes[],int tamCliente)
 {
-    printf(" Id            patente  idMarca   idColor  modelo  \n\n");
+    int flag=0;
+    system("cls");
+    printf(" Id            patente   titular   Marca           Color     modelo  \n\n");
     for(int i=0; i < tam; i++)
-    {
-        mostrarAuto( autos[i]);
+    {   if(autos[i].isEmpty==0){
+        mostrarAuto( autos[i],colores,tamColor,marcas,tamMarca,clientes,tamCliente);
+        flag=1;
+            }
     }
-    printf("\n");
+    if( flag == 0)
+        {
+            printf("\nNo hay trabajos que mostrar\n");
+        }
+      printf("\n");
 }
-
-void mostrarAuto(eAuto aut)
+void mostrarAuto(eAuto aut,eColor colores[],int tamColor,eMarca marcas[],int tamMarca,eCliente clientes[],int tamCliente)
 {
-
-    printf("  %d      %10s   %d    %d      %d \n", aut.idAuto, aut.patente,aut.idMarca,aut.idColor,aut.modelo);
+    char descColor[20];
+    char descMarca[20];
+    char nombre[20];
+    cargarDescColor(aut.idColor,colores,tamColor,descColor);
+    cargarDescMarca(aut.idMarca,marcas,tamMarca,descMarca);
+    cargarDescCliente(aut.idCliente,clientes,tamCliente,nombre);
+    printf("  %d      %s  %10s  %10s    %10s      %d \n", aut.idAuto, aut.patente,nombre,descMarca,descColor,aut.modelo);
 
 }
-int altaAuto(int id,eAuto vec[],int tamAuto,eMarca marca[],int tamMarca,eColor color[],int tamColor)
+int altaAuto(int id,int idCliente,eAuto vec[],int tamAuto,eMarca marca[],int tamMarca,eColor color[],int tamColor,eCliente clientes[],int tamCliente)
 {
     int todoOk = 0;
     char patente[20];
@@ -89,11 +110,12 @@ int altaAuto(int id,eAuto vec[],int tamAuto,eMarca marca[],int tamMarca,eColor c
         {
 
             printf(" Patente ya registrada :\n");
-            mostrarAuto(vec[yaIngresado]);
+            mostrarAuto(vec[yaIngresado],color,tamColor,marca,tamMarca,clientes,tamCliente);
 
             printf("Ingrese patente: ");
             fflush(stdin);
             gets(patente);
+            yaIngresado=buscarAutoPatente(patente,vec,tamAuto);
         }
 
         mostrarColores(color,tamColor);
@@ -106,9 +128,12 @@ int altaAuto(int id,eAuto vec[],int tamAuto,eMarca marca[],int tamMarca,eColor c
         getNumeroIntentos(&idMarca,"Ingrese id Marca: ","Error.Ingrese  ID correcto: \n",1000,1004,3);
         printf("Ingrese año de modelo : ");
         scanf("%d", &modelo);
-        getNumeroIntentos(&idMarca,"Ingrese año de modelo : ","Error.Ingrese anio de modelo entre 1980 y 2019 \n",1980,2019,3);
 
-        vec[indice] = newAuto(id, patente, idMarca, idColor, modelo);
+        while(modelo<1980 || modelo >2020){
+            printf("Error.Ingrese anio de modelo entre 1980 y 2019\n");
+            scanf("%d", &modelo);
+        }
+        vec[indice] = newAuto(id, patente,idCliente, idMarca, idColor, modelo);
         todoOk = 1;
         printf("Alta exitosa!!\n\n");
     }
@@ -161,6 +186,7 @@ int buscarAuto(int idAuto, eAuto vec[], int tam)
 }
 eAuto newAuto( int idAuto,
                char patente[],
+               int idCliente,
                int idMarca,
                int idColor,
                int modelo)
@@ -171,12 +197,13 @@ eAuto newAuto( int idAuto,
     aux.idMarca=idMarca;
     aux.modelo=modelo;
     strcpy(aux.patente,patente);
+    aux.idCliente=idCliente;
     aux.isEmpty=0;
 
     return aux;
 
 }
-int bajaAuto(eAuto vec[], int tam)
+int bajaAuto(eAuto vec[], int tam,eMarca marca[],int tamMarca,eColor color[],int tamColor,eCliente clientes[],int tamCliente)
 {
     int todoOk = 0;
     char patente[20];
@@ -185,6 +212,7 @@ int bajaAuto(eAuto vec[], int tam)
     system("cls");
     printf("***** Baja Auto *****\n\n");
     printf("Ingrese patente: ");
+    fflush(stdin);
     gets(patente);
 
     indice = buscarAutoPatente(patente, vec, tam);
@@ -196,9 +224,9 @@ int bajaAuto(eAuto vec[], int tam)
     }
     else
     {
-        mostrarAuto(vec[indice]);
+        mostrarAuto(vec[indice],color,tamColor,marca,tamMarca,clientes,tamCliente);
 
-        printf("\nConfirma baja?");
+        printf("\nConfirma baja?(s/n)");
         fflush(stdin);
         scanf("%c", &confirma);
 
@@ -216,7 +244,7 @@ int bajaAuto(eAuto vec[], int tam)
 
     return todoOk;
 }
-int modificarAuto(eAuto vec[], int tam,eMarca marca[],int tamMarca,eColor colores[],int tamColor)
+int modificarAuto(eAuto vec[], int tam,eMarca marca[],int tamMarca,eColor colores[],int tamColor,eCliente clientes[],int tamCliente)
 {
     int todoOk = 0;
     char patente[20];
@@ -238,7 +266,7 @@ int modificarAuto(eAuto vec[], int tam,eMarca marca[],int tamMarca,eColor colore
     }
     else
     {
-        mostrarAuto(vec[indice]);
+        mostrarAuto(vec[indice],colores,tamColor,marca,tamMarca,clientes,tamCliente);
         printf("1- Modificar color\n");
         printf("2- Modificar modelo\n");
         printf("3- Salir\n\n");
@@ -272,13 +300,39 @@ int buscarAutoPatente(char patente[], eAuto vec[], int tam)
 
     for(int i=0; i < tam; i++)
     {
-        if( (strcmp(vec[i].patente,patente))==0 && vec[i].isEmpty == 0)
+        if( strcmp(vec[i].patente,patente)==0 && vec[i].isEmpty == 0)
         {
             indice = i;
             break;
         }
     }
     return indice;
+}
+void mostrarAutoLocalidades( eAuto vec[],int tamAuto,eMarca marca[],int tamMarca,eColor color[],int tamColor,eCliente clientes[],int tamCliente)
+{
+
+    char localidad[20];
+    mostrarClientesLocalidad(clientes,tamCliente);
+
+    printf("Ingrese localidad: \n");
+    fflush(stdin);
+    gets(localidad);
+
+    for(int i=0; i < tamAuto; i++)
+    {
+        for(int j=0; j < tamCliente; j++)
+        {
+            if(vec[i].idCliente==clientes[j].idCliente && vec[i].isEmpty == 0)
+            {
+                if( (strcmp(clientes[j].localidad,localidad))==0 )
+                {
+                   // mostrarAutos(vec,tamAuto,color,tamColor,marca,tamMarca,clientes,tamCliente);
+                    mostrarAuto(vec[i],color,tamColor,marca,tamMarca,clientes,tamCliente);
+
+                }
+            }
+        }
+    }
 }
 void inicializarAuto(eAuto vec[], int tam)
 {
@@ -289,26 +343,32 @@ void inicializarAuto(eAuto vec[], int tam)
 }
 
 
-void ordenarAutosMarcaPatente( eAuto vec[], int tam){
+void ordenarAutosMarcaPatente( eAuto vec[], int tam)
+{
 
     eAuto aux;
     int swap = 0;
 
-    for(int i=0; i < tam-1; i++){
-        for(int j = i +1; j < tam; j++){
+    for(int i=0; i < tam-1; i++)
+    {
+        for(int j = i +1; j < tam; j++)
+        {
             // condicion para ordenar por MARCA ascendente
-            if( vec[i].idMarca>vec[j].idMarca && vec[i].isEmpty==0 && vec[j].isEmpty==0){
-                    swap = 1;
+            if( vec[i].idMarca>vec[j].idMarca && vec[i].isEmpty==0 && vec[j].isEmpty==0)
+            {
+                swap = 1;
             }
             // SI TIENEN LA MISMA MARCA LOS ORDENO POR PATENTE ASCENDETE
-            else if(  vec[i].idMarca==vec[j].idMarca && strcmp(vec[i].patente,vec[j].patente)>0 && vec[i].isEmpty==0 && vec[j].isEmpty==0){
+            else if(  vec[i].idMarca==vec[j].idMarca && strcmp(vec[i].patente,vec[j].patente)>0 && vec[i].isEmpty==0 && vec[j].isEmpty==0)
+            {
 
-                    swap = 1;
+                swap = 1;
             }
             // SI ENTRO A ALGUNO DE LOS IF ANTERIORES ES PORQUE TENGO QUE SWAPEAR
-            if( swap ){
+            if( swap )
+            {
 
-                 aux = vec[i];
+                aux = vec[i];
                 vec[i] = vec[j];
                 vec[j] = aux;
             }

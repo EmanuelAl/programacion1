@@ -17,15 +17,19 @@ typedef struct
 } eTrabajo;
 /** \brief Muestra todos los trabajos cargados
  *
- * \param eAuto vec[] es el vector que va a ser analizado
+ * \param eTrabajo trabajo[] es el vector que va a ser analizado
  * \param int tam es el tamaño  del vector ingresado
+ * \param eServicio servicio[] guarda los servicios
+ * \param int tamS tamaño del vector servicio
 
   */
 void listarTrabajos(eTrabajo trabajo[], int tam,eServicio servicio[],int tamS);
 /** \brief Muestra todos los trabajos cargados
  *
- * \param eAuto vec[] es el vector que va a ser analizado
+ * \param eTrabajo trabajo[] es el vector que va a ser analizado
  * \param int tam es el tamaño  del vector ingresado
+ * \param eServicio servicio[] guarda los servicios
+ * \param int tamS tamaño del vector servicio
 
   */
 void mostrarTrabajos(eTrabajo trabajo[], int tam,eServicio servicio[],int tamS);
@@ -45,10 +49,17 @@ void mostrarTrabajo(eTrabajo trabajo,eServicio servicio[],int tamS);
  * \param int tamS tamaño del vector de tipo eServicio
  * \param eAuto autos[] es el vector que guarda objetos de tipo eAuto
  * \param int tamAuto tamaño del vector de tipo eAuto
+ * \param eMarca marca[] vector que guarda las marcas
+ * \param int tamMarca tamaño del vector de tipo eMarca
+ * \param eColor color[] vector que guarda los colores
+ * \param int tamColor tamaño del vector de tipo eColor
+ * \param eCliente clientes[] vector que guarda los clientes
+ * \param int tamCliente tamaño del vector de tipo eCliente
+
   * \return 1 si lo pudo dar de alta , 0 sino lo pudo hacer
   *
   */
-int altaTrabajo(eTrabajo vec[], int tam,int idTrabajo,eServicio servicios[], int tamS,eAuto autos[],int tamAuto);
+int altaTrabajo(eTrabajo vec[], int tam,int idTrabajo,eServicio servicios[], int tamS,eAuto autos[],int tamAuto,eMarca marca[],int tamMarca,eColor color[],int tamColor,eCliente clientes[],int tamCliente);
 /** \brief Funcion para dar  de baja un Trabajo de manera logica
  *
  * \param eTrabajo vec[] vector que será analizado
@@ -129,3 +140,18 @@ int buscarTrabajoPatente(char patente[], eTrabajo vec[], int tam);
  *
  */
 void inicializarTrabajo(eTrabajo vec[], int tam);
+/** \brief Funcion que calcula el importe a pagar
+ *
+ * \param eTrabajo vec[] vector que será analizado
+ * \param int tam tamaño del vector de tipo eTrabajo
+ * \param eServicio servicios[] vector que guarda los servicios
+ * \param int tamS tamaño del vector de tipo eServicio
+ * \param eAuto autos[] es el vector que guarda objetos de tipo eAuto
+ * \param int tamAuto tamaño del vector de tipo eAuto
+ * \param eCliente clientes[] vector que guarda los clientes
+ * \param int tamCliente tamaño del vector de tipo eCliente
+
+  * \return 1 si lo pudo dar de alta , 0 sino lo pudo hacer
+  *
+  */
+void  mostrarImporteTotal(eTrabajo vec[], int tam,eServicio servicios[], int tamS,eAuto autos[],int tamAuto,eCliente clientes[],int tamCliente);

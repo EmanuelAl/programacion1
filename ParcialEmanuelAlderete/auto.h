@@ -1,11 +1,13 @@
 #include "marca.h"
 #include "color.h"
+#include  "cliente.h"
 #ifndef AUTO_H_INCLUDED
 #define AUTO_H_INCLUDED
 typedef struct
 {
     int idAuto;
     char patente[20];
+    int idCliente;
     int idMarca;
     int idColor;
     int modelo;
@@ -52,24 +54,41 @@ int buscarLibre(eAuto vec[], int tam);
 int estaCargado(eAuto vec[], int tam);
 /** \brief Muestra todos los autos cargados
  *
- * \param eAuto vec[] es el vector que va a ser analizado
- * \param int tam es el tamaño  del vector ingresado
+ * \param eAuto autos[] es el vector que va a ser analizado
+ * \param int tam es el tamaño  del vector de autos
+ * \param eColor colores[] vector estructura donde se guardan los colores
+ * \param int tamColor tamaño del vector de colores
+ * \param eMarca marcas[] vector estructura donde se guardan las marcas
+ * \param int tamMarca tamaño del vector de marcas
+ * \param eCliente clientes[] vector estructura donde se guardan los clientes
+ * \param int tamCliente tamaño del vector de clientes
 
   */
-void listarAutos(eAuto autos[], int tam);
+void listarAutos(eAuto autos[], int tam,eColor colores[],int tamColor,eMarca marcas[],int tamMarca,eCliente clientes[],int tamCliente);
 /** \brief Muestra todos los autos cargados
  *
- * \param eAuto vec[] es el vector que va a ser analizado
- * \param int tam es el tamaño  del vector ingresado
+ * \param eAuto autos[] es el vector que va a ser analizado
+ * \param int tam es el tamaño  del vector de autos
+ * \param eColor colores[] vector estructura donde se guardan los colores
+ * \param int tamColor tamaño del vector de colores
+ * \param eMarca marcas[] vector estructura donde se guardan las marcas
+ * \param int tamMarca tamaño del vector de marcas
+ * \param eCliente clientes[] vector estructura donde se guardan los clientes
+ * \param int tamCliente tamaño del vector de clientes
 
   */
-void mostrarAutos(eAuto autos[], int tam);
-/** \brief Muestra un auto ingresado por parametro
+void mostrarAutos(eAuto autos[], int tam,eColor colores[],int tamColor,eMarca marcas[],int tamMarca,eCliente clientes[],int tamCliente);
+/** \brief Muestra los datos de un auto
  *
  * \param eAuto aut es el objeto a ser mostrado
-
+ * \param eColor colores[] vector estructura donde se guardan los colores
+ * \param int tamColor tamaño del vector de colores
+ * \param eMarca marcas[] vector estructura donde se guardan las marcas
+ * \param int tamMarca tamaño del vector de marcas
+ * \param eCliente clientes[] vector estructura donde se guardan los clientes
+ * \param int tamCliente tamaño del vector de clientes
   */
-void mostrarAuto(eAuto aut);
+void mostrarAuto(eAuto aut,eColor colores[],int tamColor,eMarca marcas[],int tamMarca,eCliente clientes[],int tamCliente);
 /** \brief Busca el objeto en  el vector  por id
  *
  * \param int idAuto es el id del auto a ser buscado
@@ -94,16 +113,19 @@ int buscarAutoPatente(char patente[], eAuto vec[], int tam);
 /** \brief Funcion para dar  de alta  una entidad de  tipo auto
  *
  * \param int id que se asignará
+ * \param int idCliente que se asignará
  * \param eAuto vec[] vector a ser analizado
  * \param int tamAuto tamaño del vector de tipo auto
  * \param eMarca marca[] es el vector que guarda las marcas de autos
  * \param int tamMarca tamaño del vector de tipo Marca
  * \param eColor color[] es el vector que guarda los colores
  * \param int tamColor tamaño del vector de tipo Color
+ * \param eCliente clientes[] es el vector que guarda los clientes
+ * \param int tamCliente tamaño del vector de tipo  Cliente
   * \return 1 si lo pudo dar de alta , 0 sino lo pudo hacer
   *
   */
-int altaAuto(int id,eAuto vec[],int tamAuto,eMarca marca[],int tamMarca,eColor color[],int tamColor);
+int altaAuto(int id,int idCliente,eAuto vec[],int tamAuto,eMarca marca[],int tamMarca,eColor color[],int tamColor,eCliente clientes[],int tamCliente);
 
 /** \brief Funcion para modificar color/modelo  de una entidad de  tipo auto
  *
@@ -113,22 +135,31 @@ int altaAuto(int id,eAuto vec[],int tamAuto,eMarca marca[],int tamMarca,eColor c
  * \param int tamMarca tamaño del vector de tipo Marca
  * \param eColor colores[] es el vector que guarda los colores
  * \param int tamColor tamaño del vector de tipo Color
+ * \param eCliente clientes[] es el vector que guarda los clientes
+ * \param int tamCliente tamaño del vector de tipo  Cliente
  * \return 1 si se pudo modificar al objeto , 0 no se pudo modificar
   *
   */
 
-int modificarAuto(eAuto vec[], int tam,eMarca marca[],int tamMarca,eColor colores[],int tamColor);
+int modificarAuto(eAuto vec[], int tam,eMarca marca[],int tamMarca,eColor colores[],int tamColor,eCliente clientes[],int tamCliente);
 /** \brief Funcion para dar  de baja a  una entidad de  tipo auto
  *
  * \param eAuto vec[] es el vector a ser analizado
  * \param int tam tamaño del vector ingresado
+ * \param eMarca marca[] es el vector que guarda las marcas de autos
+ * \param int tamMarca tamaño del vector de tipo Marca
+ * \param eColor color[] es el vector que guarda los colores
+ * \param int tamColor tamaño del vector de tipo Color
+ * \param eCliente clientes[] es el vector que guarda los clientes
+ * \param int tamCliente tamaño del vector de tipo  Cliente
  * \return 1 si lo pudo dar de baja , 0 sino lo pudo hacer
  *
  */
-int bajaAuto(eAuto vec[], int tam);
+int bajaAuto(eAuto vec[], int tam,eMarca marca[],int tamMarca,eColor color[],int tamColor,eCliente clientes[],int tamCliente);
 /** \brief Funcion para crear un objeto de tipo eAuto
  *
  * \param int idAuto es el id que se asignará
+ * \param int idCliente es el id que se asignará
  * \param char patente[] es la patente que se asignará
  * \param int idMarca referencia a la marca del auto
  * \param int idColor referencia al color  del auto
@@ -138,10 +169,11 @@ int bajaAuto(eAuto vec[], int tam);
  */
 
 eAuto newAuto( int idAuto,
-    char patente[],
-    int idMarca,
-    int idColor,
-    int modelo);
+               char patente[],
+               int idCliente,
+               int idMarca,
+               int idColor,
+               int modelo);
 
 /** \brief Funcion que ordena al vector por marca y patente
  *
@@ -152,3 +184,4 @@ eAuto newAuto( int idAuto,
  */
 
 void ordenarAutosMarcaPatente( eAuto vec[], int tam);
+void mostrarAutoLocalidades( eAuto vec[],int tamAuto,eMarca marca[],int tamMarca,eColor color[],int tamColor,eCliente clientes[],int tamCliente);
