@@ -16,7 +16,7 @@ int hardcodearClientes( eCliente vec[], int tam, int cantidad)
     {3001,"Roberto","adrogue"},
     {3002,"Romina","avellaneda"},
    {3003,"Carla","lanus"},
-   {3004,"Lautaro","lanus"}
+   {3004,"Lautaro","marmol"}
     };
 
     if( cantidad <= 5 && tam >= cantidad)
