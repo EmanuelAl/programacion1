@@ -1,0 +1,26 @@
+FILE*
+
+=fopen(path, modo);// devuelve un puntero FILE* una direccion de memoria
+ej:
+	=fopen("archivo.txt", );
+
+modos: 
+escritura:
+- w 
+- wb
+lectura:
+- r
+- rb
+
+- a
+- ab
+para escribir en el archivo:
+se usa fprintf(punteroafile,"mensaje");
+
+funciones para archivos:
+
+fread(destino, sizeof, cant, punteroafile);
+fwrite(origen,sizeof,cant, punteroafile);
+
+para generar archivos de datos ...
+https://mockaroo.com/
