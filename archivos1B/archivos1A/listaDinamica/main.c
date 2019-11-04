@@ -43,7 +43,7 @@ int main()
         exit(EXIT_FAILURE);
     }
 
-    FILE* f = fopen("empleados.csv", "r");
+    FILE* f = fopen("empleados.csv", "r");//modo lectura
     if( f == NULL)
     {
         printf("No se pudo abrir el archivo\n");
@@ -51,23 +51,24 @@ int main()
         exit(1);
     }
 
-    fscanf(f, "%[^,],%[^,],%[^\n]\n", buffer[0], buffer[1], buffer[2] );
+    fscanf(f, "%[^,],%[^,],%[^\n]\n", buffer[0], buffer[1], buffer[2] );//lee y salta el encabezado,asigna los valores a cada elemento del buffer
+
 
     while( !feof(f))
     {
 
-        cant = fscanf(f, "%[^,],%[^,],%[^\n]\n", buffer[0], buffer[1], buffer[2] );
-        if( cant == 3)
+        cant = fscanf(f, "%[^,],%[^,],%[^\n]\n", buffer[0], buffer[1], buffer[2] );//devolvera la cantidad que pudo cargar
+        if( cant == 3)//si pudo cargar los tres
         {
-            id = atoi(buffer[0]);
+            id = atoi(buffer[0]);//funcion que convierte el parametro ingresado a tipo int
             strcpy(nombre, buffer[1]);
-            sueldo = atof(buffer[2]);
+            sueldo = atof(buffer[2]);//funcion que convierte el parametro ingresado a tipo float
 
             auxEmpleado = newEmpleadoParam(id, nombre, sueldo);
 
             if( auxEmpleado != NULL)
             {
-                *(lista + tam) = auxEmpleado;
+                *(lista + tam) = auxEmpleado;//guarda el puntero en una posicion de la lista
                 tam++;
 
                 if((lista = agrandarLista(lista, tam + 1 )) == NULL)
@@ -148,10 +149,10 @@ int main()
     return 0;
 }
 
-eEmpleado* newEmpleado()
+eEmpleado* newEmpleado()//devuelve un puntero
 {
     eEmpleado* nuevo = (eEmpleado*) malloc( sizeof(eEmpleado));
-    if(nuevo != NULL)
+    if(nuevo != NULL)//si no es null inicializo los campos de la variable de tipo estructura a la que apunta nuevo
     {
         nuevo->id = 0;
         strcpy(nuevo->nombre, " ");
