@@ -204,5 +204,11 @@ int employee_compareBySueldo(void* emp1,void* emp2)
 }
     return e1->sueldo - e2->sueldo;
 }
-
+void employee_delete(Employee* this)
+{
+    if(this!=NULL)
+    {
+        free(this);
+    }
+}
 
