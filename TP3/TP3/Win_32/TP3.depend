@@ -1,80 +1,39 @@
 # depslib dependency file v1.0
-1533062952 source:/home/mauro/Descargas/Practica_Pair_v1.2/Linux_64/Employee.c
-
-1533063050 source:/home/mauro/Descargas/Practica_Pair_v1.2/Linux_64/main.c
+1573102414 source:c:\users\usuario\desktop\programacion1-master\tp3\tp3\win_32\controller.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
+	"Controller.h"
+	"parser.h"
 
-1532354323 /home/mauro/Descargas/Practica_Pair_v1.2/Linux_64/LinkedList.h
+1573039685 c:\users\usuario\desktop\programacion1-master\tp3\tp3\win_32\linkedlist.h
 
-1533062926 /home/mauro/Descargas/Practica_Pair_v1.2/Linux_64/Employee.h
+1573101247 c:\users\usuario\desktop\programacion1-master\tp3\tp3\win_32\employee.h
 
-1533063080 source:/home/mauro/Descargas/Practica_Pair_v1.2/Linux_64/parser.c
+1573039685 c:\users\usuario\desktop\programacion1-master\tp3\tp3\win_32\controller.h
+
+1573039685 c:\users\usuario\desktop\programacion1-master\tp3\tp3\win_32\parser.h
+
+1573101620 source:c:\users\usuario\desktop\programacion1-master\tp3\tp3\win_32\employee.c
+	"Employee.h"
+	"LinkedList.h"
+	<string.h>
 	<stdio.h>
 	<stdlib.h>
-	"LinkedList.h"
-	"Employee.h"
 
-1533062952 source:/home/mauro/Descargas/TP3/Linux_64/Employee.c
-
-1533066103 source:/home/mauro/Descargas/TP3/Linux_64/main.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Employee.h"
-
-1532354323 /home/mauro/Descargas/TP3/Linux_64/LinkedList.h
-
-1533066103 /home/mauro/Descargas/TP3/Linux_64/Employee.h
-
-1533063080 source:/home/mauro/Descargas/TP3/Linux_64/parser.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Employee.h"
-
-1533145792 source:/home/mauro/Descargas/TP3-20180801T173619Z-001/TP3/Linux_64/Controller.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Employee.h"
-
-1533118898 /home/mauro/Descargas/TP3-20180801T173619Z-001/TP3/Linux_64/LinkedList.h
-
-1533118898 /home/mauro/Descargas/TP3-20180801T173619Z-001/TP3/Linux_64/Employee.h
-
-1533118898 source:/home/mauro/Descargas/TP3-20180801T173619Z-001/TP3/Linux_64/Employee.c
-
-1533145890 source:/home/mauro/Descargas/TP3-20180801T173619Z-001/TP3/Linux_64/parser.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Employee.h"
-
-1572867512 source:c:\users\alumno\desktop\programacion1\tp3\tp3\win_32\controller.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Employee.h"
-
-1572873092 c:\users\alumno\desktop\programacion1\tp3\tp3\win_32\linkedlist.h
-
-1572873598 c:\users\alumno\desktop\programacion1\tp3\tp3\win_32\employee.h
-
-1572867512 source:c:\users\alumno\desktop\programacion1\tp3\tp3\win_32\main.c
+1573100723 source:c:\users\usuario\desktop\programacion1-master\tp3\tp3\win_32\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
 
-1572867512 c:\users\alumno\desktop\programacion1\tp3\tp3\win_32\controller.h
-
-1572867512 source:c:\users\alumno\desktop\programacion1\tp3\tp3\win_32\parser.c
+1573101743 source:c:\users\usuario\desktop\programacion1-master\tp3\tp3\win_32\parser.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"LinkedList.h"
 	"Employee.h"
+	"parser.h"
 

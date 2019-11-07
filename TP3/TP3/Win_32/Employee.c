@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 
-Employee* new_Employee()//devuelve un puntero
+Employee* employee_new()//devuelve un puntero
 {
     Employee* nuevo = (Employee*) malloc( sizeof(Employee));
     if(nuevo != NULL)//si no es null inicializo los campos de la variable de tipo estructura a la que apunta nuevo
@@ -21,7 +21,7 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 {
     int id=atoi(idStr);
 
-    Employee* nuevo = new_Employee();//puntero con la direccion dinamina
+    Employee* nuevo = employee_new();//puntero con la direccion dinamina
     if( nuevo != NULL)
     {
         if(employee_setId(nuevo, id) &&
@@ -130,10 +130,10 @@ int employee_getSueldo(Employee* this,int* sueldo)
 //a continuacion...para hacer las funciones hay que utilizar las funciones get para reutilizar codigo
 int employee_compareById(void* emp1,void* emp2)
 {
-    //int retorno=0;
-    Employee* e1=NULL;
-    Employee* e2=NULL;
-    /*int id1;
+    int retorno=0;
+    //Employee* e1=NULL;
+    //Employee* e2=NULL;
+    int id1;
     int id2;
     employee_getId((Employee*) emp1, &id1);// le carga a id1 el valor que hay en el id del emp1
     employee_getId((Employee*) emp2, &id2);
@@ -144,7 +144,7 @@ int employee_compareById(void* emp1,void* emp2)
     }
 
     return retorno;
-    */
+    /*
     if(emp1!=NULL)
     {
         e1=(Employee*) emp1;//parseo a puntero
@@ -159,7 +159,7 @@ int employee_compareById(void* emp1,void* emp2)
         return -1;
     }else{
         return 0;
-    }//si emp1 id es mayor a emp2 id ,devuelve un int positivo y negativo si es al reves, y cero si son iguales
+    }//si emp1 id es mayor a emp2 id ,devuelve un int positivo y negativo si es al reves, y cero si son iguales */
 }
 int employee_compareByName(void* emp1,void* emp2)
 {

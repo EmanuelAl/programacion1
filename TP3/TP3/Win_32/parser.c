@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "LinkedList.h"
 #include "Employee.h"
+#include "parser.h"
 
 /** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo texto).
  *
@@ -12,36 +14,44 @@
  */
 int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 {
+    int todoOk=-1;
+    Employee* auxEmpleado=NULL;
     char auxId[50];
     char auxNombre[50];
     char auxHorasTrabajadas[50];
     char auxSueldo[50];
 
+
+    int sueldo;
+    char nombre[50];
+    //int horasTrabajadas;
     int cant;
+    int r;
     if(pFile != NULL){
         while( !feof(pFile)){
-            cant = fscanf(f, "%[^,],%[^,],%[^,],%[^,],%[^\n]\n", auxId, auxNombre, auxHorasTrabajadas ,auxSueldo);//devolvera la cantidad que pudo cargar
-        if( cant == 4)//si pudo cargar los tres
+            cant = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n", auxId, auxNombre, auxHorasTrabajadas ,auxSueldo);//devolvera la cantidad que pudo cargar
+        if( cant == 4)//si pudo cargar los cuatro
         {
-            id = atoi(auxId);//funcion que convierte el parametro ingresado a tipo int
-            strcpy(auxNombre, auxNombre);
+            //id = atoi(auxId);//funcion que convierte el parametro ingresado a tipo int
+            strcpy(nombre, auxNombre);
             sueldo = atoi(auxSueldo);//funcion que convierte el parametro ingresado a tipo float
-            sueldo = atoi(auxSueldo)
-            auxEmpleado = newEmpleadoParam(id, nombre, sueldo);
+            //horasTrabajadas = atoi(auxHorasTrabajadas);
+            auxEmpleado = employee_newParametros(auxId, nombre,auxHorasTrabajadas, sueldo);
 
             if( auxEmpleado != NULL)
             {
-                *(lista + tam) = auxEmpleado;//guarda el puntero en una posicion de la lista
-                tam++;
-
-                if((lista = agrandarLista(lista, tam + 1 )) == NULL)
-                {
-                    printf("No se pudo agrandar la lista");
-
+                r = ll_add(pArrayListEmployee,(Employee*)auxEmpleado);//guarda el puntero en una posicion de la lista
+                if(r==0){
+                    printf(" Se agrego a la lista con exito\n ");
+                    todoOk=1;
+                }else if(r==-1){
+                    printf(" No se pudo agregar elemento a la lista\n ");
                 }
         }
     }
-    return 1;
+        }
+    }
+    return todoOk;
 }
 
 /** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo binario).
@@ -53,6 +63,25 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
  */
 int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
 {
+ Employee* aux=NULL;
+int todoOk=-1;
+int cant;
+    if(pFile != NULL)
+    {
+        while(!feof(pFile))
+        {
+            aux = employee_new();
+            if(aux!=NULL){
+               cant= fread(aux,sizeof(Employee),1,pFile);
+               if(cant==1){
+                ll_add(pArrayListEmployee,aux);
+                todoOk=1;
+               }
 
-    return 1;
-}
+            }
+
+        }
+
+        }
+        return todoOk;
+    }
