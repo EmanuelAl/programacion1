@@ -17,7 +17,7 @@ LinkedList* ll_newLinkedList(void)
 {
     LinkedList* this= NULL;
 
-    this=(LinkedList*) malloc(sizeof(LinkedList));
+    this=(LinkedList*) malloc(sizeof(LinkedList));//se busca y asigna espacio dinàmico
     if (this != NULL)
     {
         this->size =0;
@@ -56,30 +56,29 @@ int ll_len(LinkedList* this)
 static Node* getNode(LinkedList* this, int nodeIndex)
 {
 
-   /* Node* actual=NULL;
+    /* Node* actual=NULL;
 
-  /*  if(this!=NULL )
-    {
-        if(nodeIndex >=0 && nodeIndex<ll_len(this))
-        {
-             actual=this->pFirstNode;
-            while( actual->pNextNode!=NULL){
+     if(this!=NULL )
+     {
+         if(nodeIndex >=0 && nodeIndex<ll_len(this))
+         {
+              actual=this->pFirstNode;
+             while( actual->pNextNode!=NULL){
 
-                actual= actual->pNextNode;
+                 actual= actual->pNextNode;
 
-                nodeIndex--;
+                 nodeIndex--;
 
-                if(nodeIndex< 0){
-                    break;
-                }
-            }
+                 if(nodeIndex< 0){
+                     break;
+                 }
+             }
 
-        }
+         }
 
 
-    }*/
+     }*/
 
-    int i;
     int len;
     Node* pnode = NULL;
     if(this !=NULL)
@@ -88,14 +87,13 @@ static Node* getNode(LinkedList* this, int nodeIndex)
         if(nodeIndex>=0 && nodeIndex<len)
         {
             pnode= this->pFirstNode;
-            for(i=0; i<nodeIndex; i++)
+            for(int i=0; i<nodeIndex; i++)//seguira iterando y accediendo a cada nodo hasta el ult indicado
             {
-                pnode=pnode->pNextNode;
+                pnode=pnode->pNextNode;//puntero al siguiente nodo
             }
         }
     }
     return pnode;
-   // return actual;
 }
 
 /** \brief  Permite realizar el test de la funcion getNode la cual es privada
@@ -126,30 +124,63 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
     int returnAux = -1;
     Node* nuevoNodo=NULL;
     Node* aux=NULL;
-     if(this!=NULL )
+    Node* aux2=NULL;
+    Node* aux3=NULL;
+    if(this!=NULL )
     {
         if(nodeIndex >=0 && nodeIndex<ll_len(this))
-        nuevoNodo=(Nodo*) malloc(sizeof(Nodo));
-        if(nuevoNodo!=NULL){
-                nuevoNodo->pElement=pElement;
-            if(nodeIndex ==0){
-                nuevoNodo->pNextNode = this->pFirstNode;
-                this->pFirstNode=nuevoNodo;
-                this->size++;
-            }else if(nodeIndex< ll_len(this)){
-                    aux= getNode(this,nodeIndex);
-                    if(aux!=NULL){
-                        nuevoNodo->pNextNode=aux->pNextNode;
-                        aux->pNextNode=nuevoNodo;
+        {
+            nuevoNodo=(Node*) malloc(sizeof(Node));
+            if(nuevoNodo!=NULL)
+            {
+                nuevoNodo->pElement=pElement;//asignamos el elemento al nodo
+                if(nodeIndex == 0) //si lo quiere agregar en la primer posicion ...agregar (no es lo mismo que pisar el dato en la posicion indicada)
+                {
+
+                       nuevoNodo->pNextNode = this->pFirstNode;
+                        this->pFirstNode=nuevoNodo;
                         this->size++;
+                        //free(aux);
+                        returnAux=0;
+
+                }
+                else if(nodeIndex< ll_len(this))
+                {
+                    aux= getNode(this,nodeIndex);
+                    if(aux!=NULL)
+                    {
+                        nuevoNodo->pNextNode=aux->pNextNode;
+                        //aux->pNextNode=nuevoNodo;
+                        free(aux);
+                        this->size++;
+
+                        returnAux=0;
                     }
-        }
-        }
-    }
+                    aux2= getNode(this,nodeIndex-1);
+                    if(aux2!=NULL)
+                    {
+                        aux2->pNextNode=nuevoNodo;//apunta al nuevo nodo
+                    }
+                    aux3= getNode(this,nodeIndex+1);
+                    if(aux3!=NULL)
+                    {
+                        nuevoNodo->pNextNode=aux3;//nuevo nodo apunta al siguiente nodo
+                        //aux->pNextNode=nuevoNodo;
+                        //free(aux);
+                        //this->size++;
+                    }
+                    else
+                    {
+                        returnAux = -1;
+                    }
+                }
+            }
+        }else
+                    {
+                        returnAux = -1;
+                    }
 
     }
-
-    if()
     return returnAux;
 }
 
