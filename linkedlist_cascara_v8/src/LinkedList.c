@@ -56,28 +56,6 @@ int ll_len(LinkedList* this)
 static Node* getNode(LinkedList* this, int nodeIndex)
 {
 
-    /* Node* actual=NULL;
-
-     if(this!=NULL )
-     {
-         if(nodeIndex >=0 && nodeIndex<ll_len(this))
-         {
-              actual=this->pFirstNode;
-             while( actual->pNextNode!=NULL){
-
-                 actual= actual->pNextNode;
-
-                 nodeIndex--;
-
-                 if(nodeIndex< 0){
-                     break;
-                 }
-             }
-
-         }
-
-
-     }*/
 
     int len;
     Node* pnode = NULL;
@@ -124,62 +102,40 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
     int returnAux = -1;
     Node* nuevoNodo=NULL;
     Node* aux=NULL;
-    Node* aux2=NULL;
-    Node* aux3=NULL;
-    if(this!=NULL )
+    int len;
+    nuevoNodo= malloc(sizeof(Node));
+    nuevoNodo->pElement=pElement;
+    if(this!=NULL && nuevoNodo!=NULL )
     {
-        if(nodeIndex >=0 && nodeIndex<ll_len(this))
+        //asignamos el elemento al nodo
+        len = ll_len(this);
+        if(nodeIndex >=0 && nodeIndex<=len)
         {
-            nuevoNodo=(Node*) malloc(sizeof(Node));
-            if(nuevoNodo!=NULL)
+            if(nodeIndex == 0) //si lo quiere agregar en la primer posicion ...agregar (no es lo mismo que pisar el dato en la posicion indicada)
             {
-                nuevoNodo->pElement=pElement;//asignamos el elemento al nodo
-                if(nodeIndex == 0) //si lo quiere agregar en la primer posicion ...agregar (no es lo mismo que pisar el dato en la posicion indicada)
-                {
 
-                       nuevoNodo->pNextNode = this->pFirstNode;
-                        this->pFirstNode=nuevoNodo;
-                        this->size++;
-                        //free(aux);
-                        returnAux=0;
+                nuevoNodo->pNextNode = this->pFirstNode;
+                this->pFirstNode=nuevoNodo;
+                // this->size++;
+                //returnAux=0;
 
-                }
-                else if(nodeIndex< ll_len(this))
-                {
-                    aux= getNode(this,nodeIndex);
-                    if(aux!=NULL)
-                    {
-                        nuevoNodo->pNextNode=aux->pNextNode;
-                        //aux->pNextNode=nuevoNodo;
-                        free(aux);
-                        this->size++;
-
-                        returnAux=0;
-                    }
-                    aux2= getNode(this,nodeIndex-1);
-                    if(aux2!=NULL)
-                    {
-                        aux2->pNextNode=nuevoNodo;//apunta al nuevo nodo
-                    }
-                    aux3= getNode(this,nodeIndex+1);
-                    if(aux3!=NULL)
-                    {
-                        nuevoNodo->pNextNode=aux3;//nuevo nodo apunta al siguiente nodo
-                        //aux->pNextNode=nuevoNodo;
-                        //free(aux);
-                        //this->size++;
-                    }
-                    else
-                    {
-                        returnAux = -1;
-                    }
-                }
             }
-        }else
-                    {
-                        returnAux = -1;
-                    }
+            else if(nodeIndex<= len)
+            {
+                aux= getNode(this,nodeIndex-1);
+                if(aux!=NULL)
+                {
+                    nuevoNodo->pNextNode=aux->pNextNode;
+                    aux->pNextNode=nuevoNodo;
+                    //this->size++;
+                    // returnAux=0;
+                }
 
+            }
+            this->size++;
+            returnAux=0;
+
+        }
     }
     return returnAux;
 }
@@ -209,7 +165,11 @@ int test_addNode(LinkedList* this, int nodeIndex,void* pElement)
 int ll_add(LinkedList* this, void* pElement)
 {
     int returnAux = -1;
-
+    if(this!=NULL)
+    {
+        addNode(this,ll_len(this),pElement);
+        returnAux=0;
+    }
     return returnAux;
 }
 
@@ -224,7 +184,19 @@ int ll_add(LinkedList* this, void* pElement)
 void* ll_get(LinkedList* this, int index)
 {
     void* returnAux = NULL;
+    Node* pNodoAux=NULL;
+    if(this!=NULL)
+    {
+        if(index>=0 && index<ll_len(this))
+        {
+            pNodoAux=getNode(this,index);
+            if(pNodoAux!=NULL)
+            {
+                returnAux =pNodoAux->pElement;
+            }
 
+        }
+    }
     return returnAux;
 }
 
@@ -241,6 +213,22 @@ void* ll_get(LinkedList* this, int index)
 int ll_set(LinkedList* this, int index,void* pElement)
 {
     int returnAux = -1;
+    Node* pNodoAux=NULL;
+
+    if(this!=NULL)
+    {
+        if(index>=0 && index<ll_len(this))
+        {
+            pNodoAux=getNode(this,index);
+            if(pNodoAux!=NULL)
+            {
+                pNodoAux->pElement=pElement;
+                returnAux = 0;
+            }
+
+        }
+
+    }
 
     return returnAux;
 }
@@ -257,10 +245,55 @@ int ll_set(LinkedList* this, int index,void* pElement)
 int ll_remove(LinkedList* this,int index)
 {
     int returnAux = -1;
+    Node* pNodoAux=NULL;
+    Node* pNodoAnterior=NULL;
 
+    if(this!=NULL)
+    {
+        if(index>=0 && index<ll_len(this))
+        {
+            pNodoAux=getNode(this,index);
+            pNodoAnterior=getNode(this,index-1);
+
+            if(index==0)
+            {
+                if(pNodoAux!=NULL)
+                {
+                    this->pFirstNode=pNodoAux->pNextNode;
+                    free(pNodoAux);
+                }
+            }
+            else
+            {
+                if(pNodoAnterior!=NULL && pNodoAux!=NULL)
+                {
+                        pNodoAnterior->pNextNode=pNodoAux->pNextNode;
+                        free(pNodoAux);
+                }
+            }
+            this->size--;
+            returnAux=0;
+/*        if(pNodoAnterior!=NULL && pNodoAux!=NULL){
+             if(index==0)
+            {
+                    this->pFirstNode=pNodoAux->pNextNode;
+                    free(pNodoAux);
+            }
+            else
+            {
+                        pNodoAnterior->pNextNode=pNodoAux->pNextNode;
+                        free(pNodoAux);
+            }
+
+        }
+        this->size--;
+            returnAux=0;
+        }*/
+
+    }
+}
     return returnAux;
 }
-
 
 /** \brief Elimina todos los elementos de la lista
  *

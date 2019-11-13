@@ -36,11 +36,11 @@ struct LinkedList
 //Publicas
 LinkedList* ll_newLinkedList(void);
 int ll_len(LinkedList* this);                                       //devuelve el valor del campo int size
-Node* test_getNode(LinkedList* this, int nodeIndex);
+Node* test_getNode(LinkedList* this, int nodeIndex);//me trae un puntero a nodo,me devuelve el nodo
 int test_addNode(LinkedList* this, int nodeIndex,void* pElement);
 int ll_add(LinkedList* this, void* pElement);
-void* ll_get(LinkedList* this, int index);
-int ll_set(LinkedList* this, int index,void* pElement);
+void* ll_get(LinkedList* this, int index);// me devuelve el elemento que quiero ,el puntero al elemento
+int ll_set(LinkedList* this, int index,void* pElement);//modifica un elemnto de la lista
 int ll_remove(LinkedList* this,int index);// es sacar el vagon del tren(analogia)
 int ll_clear(LinkedList* this);
 int ll_deleteLinkedList(LinkedList* this);
