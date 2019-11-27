@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1574693099 source:d:\tecnicatura programacion\programacion\programacion1\parcial2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+
+1574693099 d:\tecnicatura programacion\programacion\programacion1\parcial2\linkedlist.h
+

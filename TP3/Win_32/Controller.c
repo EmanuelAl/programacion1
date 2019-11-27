@@ -39,7 +39,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
     int todoOk=-1;
     FILE* pFile=NULL;
-    pFile=fopen(path,"r");//modo lectura
+    pFile=fopen(path,"rb");//modo lectura
     if(pFile!=NULL){
         parser_EmployeeFromText(pFile,pArrayListEmployee);
         todoOk=1;
@@ -51,7 +51,6 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 
 /** \brief Alta de empleados
  *
- * \param path char*
  * \param pArrayListEmployee LinkedList*
  * \return int
  *
@@ -169,7 +168,6 @@ int controller_nextID(LinkedList* pArrayListEmployee)
 
 /** \brief Modificar datos de empleado
  *
- * \param path char*
  * \param pArrayListEmployee LinkedList*
  * \return int
  *
@@ -302,7 +300,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
 /** \brief Baja de empleado
  *
- * \param path char*
+
  * \param pArrayListEmployee LinkedList*
  * \return int
  *
@@ -372,7 +370,7 @@ return todoOk;
 
 /** \brief Listar empleados
  *
- * \param path char*
+
  * \param pArrayListEmployee LinkedList*
  * \return int
  *
@@ -409,15 +407,46 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 
 /** \brief Ordenar empleados
  *
- * \param path char*
  * \param pArrayListEmployee LinkedList*
  * \return int
  *
  */
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
+ int todoOk = -1;
+int opcion;
+    if(pArrayListEmployee != NULL)
+    {
 
-    return 1;
+                printf("Ordenar... \n ");
+                printf(" 1) Por Nombre \n");
+                printf(" 2) Por Sueldo \n");
+                printf(" 3) Por horas trabadas.\n");
+
+                printf("\n ingresa opcion: ");
+                scanf("%d", &opcion);
+
+            switch(opcion)
+            {
+                case 1:
+                    ll_sort(pArrayListEmployee, employee_compareByName, 1);
+                    break;
+                case 2:
+
+                    ll_sort(pArrayListEmployee, employee_compareBySueldo, 1);
+                    break;
+                case 3:
+
+                    ll_sort(pArrayListEmployee, employee_compareByHorasTrabajadas, 1);
+                    break;
+                default:
+                    printf("\nOpcion invalida!");
+            }
+
+        todoOk = 0;
+    }
+
+    return todoOk ;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).

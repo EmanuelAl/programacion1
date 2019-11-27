@@ -127,82 +127,72 @@ int employee_getSueldo(Employee* this,int* sueldo)
     return todoOk;
 }
 //-------------------------------------------------
-//a continuacion...para hacer las funciones hay que utilizar las funciones get para reutilizar codigo
 int employee_compareById(void* emp1,void* emp2)
 {
     int retorno=0;
-    //Employee* e1=NULL;
-    //Employee* e2=NULL;
     int id1;
     int id2;
     employee_getId((Employee*) emp1, &id1);// le carga a id1 el valor que hay en el id del emp1
     employee_getId((Employee*) emp2, &id2);
     if(id1 > id2){
         retorno=1;
-    }else if(id1 > id2){
+    }else if(id2 > id1){
         retorno=-1;
     }
 
     return retorno;
-    /*
-    if(emp1!=NULL)
-    {
-        e1=(Employee*) emp1;//parseo a puntero
-    }
-    if(emp2!=NULL)
-    {
-        e2=(Employee*) emp2;
-    }
-    if( (e1->id - e2->id)>0){
-        return 1;
-    }else if( (e1->id - e2->id)<0){
-        return -1;
-    }else{
-        return 0;
-    }//si emp1 id es mayor a emp2 id ,devuelve un int positivo y negativo si es al reves, y cero si son iguales */
 }
 int employee_compareByName(void* emp1,void* emp2)
 {
-    Employee* e1=NULL;
-    Employee* e2=NULL;
-    if(emp1!=NULL)
+     char nombre1[50];
+    char nombre2[50];
+    int retorno = 0;
+
+    employee_getNombre((Employee*) emp1, nombre1);
+    employee_getNombre((Employee*) emp2, nombre2);
+
+    if(strcmp(nombre1, nombre2) > 0)
     {
-         e1=(Employee*) emp1;//parseo a puntero
+        retorno = 1;
     }
-    if(emp2!=NULL)
+    else if(strcmp(nombre1, nombre2) < 0)
     {
-        e2=(Employee*) emp2;
+        retorno = -1;
     }
-    return strcmp(e1->nombre,e2->nombre);
+
+    return retorno;
+
+
 }
 int employee_compareByHorasTrabajadas(void* emp1,void* emp2)
     {
-        Employee* e1=NULL;
-        Employee* e2=NULL;
+       int retorno=0;
+    int horas1;
+    int horas2;
+    employee_getHorasTrabajadas((Employee*) emp1, &horas1);
+    employee_getHorasTrabajadas((Employee*) emp2, &horas2);
+    if(horas1 > horas2){
+        retorno=1;
+    }else if(horas1 < horas2){
+        retorno=-1;
+    }
 
-        if(emp1!=NULL)
-        {
-            e1=(Employee*) emp1;//parseo a puntero
-        }
-        if(emp2!=NULL)
-        {
-            e2=(Employee*) emp2;
-        }
-   return e1->horasTrabajadas - e2->horasTrabajadas;
+    return retorno;
     }
 int employee_compareBySueldo(void* emp1,void* emp2)
 {
-    Employee* e1=NULL;
-    Employee* e2=NULL;
-    if(emp1!=NULL)
-    {
-       e1=(Employee*) emp1;//parseo a puntero
-            }
-    if(emp2!=NULL)
-    {
-         e2=(Employee*) emp2;
-}
-    return e1->sueldo - e2->sueldo;
+    int retorno=0;
+    int sueldo1;
+    int sueldo2;
+    employee_getSueldo((Employee*) emp1, &sueldo1);// le carga a id1 el valor que hay en el id del emp1
+    employee_getSueldo((Employee*) emp2, &sueldo2);
+    if(sueldo1 > sueldo2){
+        retorno=1;
+    }else if(sueldo2 > sueldo1){
+        retorno=-1;
+    }
+
+    return retorno;
 }
 void employee_delete(Employee* this)
 {
