@@ -1,0 +1,94 @@
+# depslib dependency file v1.0
+1574693099 source:d:\tecnicatura programacion\programacion\programacion1\parcial2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+
+1574693099 d:\tecnicatura programacion\programacion\programacion1\parcial2\linkedlist.h
+
+1574819748 source:c:\users\alumno\desktop\programacion1-master\emanuelalderete2ºparcial\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1574693100 c:\users\alumno\desktop\programacion1-master\emanuelalderete2ºparcial\linkedlist.h
+
+1574862677 source:c:\users\alumno\desktop\programacion1-master\emanuelalderete2ºparcial\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"Controller.h"
+	"LinkedList.h"
+	"Cachorro.h"
+
+1574859454 c:\users\alumno\desktop\programacion1-master\emanuelalderete2ºparcial\controller.h
+	"LinkedList.h"
+
+1574857779 c:\users\alumno\desktop\programacion1-master\emanuelalderete2ºparcial\cachorro.h
+
+1574862367 source:c:\users\alumno\desktop\programacion1-master\emanuelalderete2ºparcial\cachorro.c
+	"Cachorro.h"
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1574863272 source:c:\users\alumno\desktop\programacion1-master\emanuelalderete2ºparcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Cachorro.h"
+
+1574863982 source:c:\users\alumno\desktop\programacion1-master\emanuelalderete2ºparcial\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"parser.h"
+	"Cachorro.h"
+
+1574859784 c:\users\alumno\desktop\programacion1-master\emanuelalderete2ºparcial\parser.h
+
+1575345098 source:d:\tecnicatura programacion\programacion\programacion1-master\emanuelalderete2ºparcial\cachorro.c
+	"Cachorro.h"
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1574857780 d:\tecnicatura programacion\programacion\programacion1-master\emanuelalderete2ºparcial\cachorro.h
+
+1575379915 source:d:\tecnicatura programacion\programacion\programacion1-master\emanuelalderete2ºparcial\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"Controller.h"
+	"LinkedList.h"
+	"Cachorro.h"
+
+1574859456 d:\tecnicatura programacion\programacion\programacion1-master\emanuelalderete2ºparcial\controller.h
+	"LinkedList.h"
+
+1574693100 d:\tecnicatura programacion\programacion\programacion1-master\emanuelalderete2ºparcial\linkedlist.h
+
+1574819748 source:d:\tecnicatura programacion\programacion\programacion1-master\emanuelalderete2ºparcial\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1575380881 source:d:\tecnicatura programacion\programacion\programacion1-master\emanuelalderete2ºparcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Cachorro.h"
+
+1575381087 source:d:\tecnicatura programacion\programacion\programacion1-master\emanuelalderete2ºparcial\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"parser.h"
+	"Cachorro.h"
+
+1574859786 d:\tecnicatura programacion\programacion\programacion1-master\emanuelalderete2ºparcial\parser.h
+
