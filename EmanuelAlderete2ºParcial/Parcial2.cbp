@@ -43,6 +43,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="LinkedList.h" />
+		<Unit filename="imput.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="imput.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

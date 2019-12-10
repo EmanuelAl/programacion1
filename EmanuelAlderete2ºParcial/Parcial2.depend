@@ -100,19 +100,21 @@
 
 1575917437 c:\users\emaxd\desktop\emanuelalderete2ºparcial\linkedlist.h
 
-1575999935 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\main.c
+1576010453 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Cachorro.h"
+	"imput.h"
 
 1575936386 c:\users\emaxd\desktop\emanuelalderete2ºparcial\controller.h
 	"LinkedList.h"
 
 1575921578 c:\users\emaxd\desktop\emanuelalderete2ºparcial\cachorro.h
 
-1575919370 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\parser.c
+1576006086 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\parser.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -122,17 +124,25 @@
 
 1574859786 c:\users\emaxd\desktop\emanuelalderete2ºparcial\parser.h
 
-1576004775 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\cachorro.c
+1576005605 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\cachorro.c
 	"Cachorro.h"
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 
-1575998173 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\controller.c
+1576005605 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\controller.c
 	<stdio.h>
 	<stdlib.h>
 	"Controller.h"
 	"LinkedList.h"
 	"Cachorro.h"
 	"parser.h"
+
+1576010453 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\imput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"imput.h"
+
+1576010453 c:\users\emaxd\desktop\emanuelalderete2ºparcial\imput.h
 

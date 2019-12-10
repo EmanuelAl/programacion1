@@ -1,18 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Cachorro.h"
+#include "imput.h"
 int menu();
 int main()
 {
 char salir='n';
     int devuelve;
-
-   // int abrirTexto = 1;
-   // char nombreArchivo;
-//    int guardarTexto = 0;
-
+    char nombreArchivo[50];
+   char extensionArchivo[10]="csv";
+    //char extensionArchivo[10]={'c','s','v','\0'};
+    char destino[70];
     LinkedList* listaCachorros = ll_newLinkedList();
     LinkedList* listaCachorros2 = ll_newLinkedList();
        LinkedList* listaCachorros3 = ll_newLinkedList();
@@ -21,8 +22,13 @@ char salir='n';
         switch(menu())
         {
             case 1:
-
-                devuelve = controller_loadFromText("cachorros.csv",listaCachorros);
+                    printf("Ingrese nombre del archivo \n");
+                    fflush(stdin);
+                    //gets(nombreArchivo);
+                    scanf("%s",nombreArchivo);
+                    concatenar(destino,nombreArchivo,extensionArchivo);//concatena el nombre del archivo con la extension
+                //devuelve = controller_loadFromText("cachorros.csv",listaCachorros);
+                    devuelve = controller_loadFromText(destino,listaCachorros);
                 if (devuelve == 1)//si lo pudo leer
                 {
                     printf("\n Archivo abierto modo text \n\n");
