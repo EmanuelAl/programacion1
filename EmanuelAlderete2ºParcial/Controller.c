@@ -3,6 +3,7 @@
 #include "Controller.h"
 #include "LinkedList.h"
 #include "Cachorro.h"
+#include "parser.h"
 
 int controller_loadFromText(char* path, LinkedList* pArrayListCachorro)
 {
@@ -46,7 +47,7 @@ int controller_ListCachorro(LinkedList* pArrayListCachorro)
     if(pArrayListCachorro != NULL)
     {
 
-        printf("\n\n ID \t  NOMBRE \t DIAS \t RAZA \t RESERVADO \t GENERO \n\n");
+        printf("\n\n ID \t  NOMBRE \t DIAS \t\t RAZA \t RESERVADO \t GENERO \n\n");
 
         for(int i=0; i < ll_len(pArrayListCachorro); i++)
         {
@@ -58,9 +59,57 @@ int controller_ListCachorro(LinkedList* pArrayListCachorro)
             cachorro_getReservado(cachorro,reservado);
             cachorro_getGenero(cachorro,genero);
 
-            printf("%d  %20s %20d %20s %20s %20s \n", id, nombre, dias, raza,reservado,genero);
+            printf("%d  %15s %10d %15s %10s %10s \n", id, nombre, dias, raza,reservado,genero);
         }
         todoOk=1;
     }
     return todoOk;
+}
+int controller_saveAsText(char* path, LinkedList* pArrayListCachorro)
+{
+
+    FILE* pArchivo;
+    Cachorro* cachorroAux;
+
+    int retorno = -1;
+
+    int* auxiliarID;
+    char* auxiliarNombre;
+    int* auxiliarDias;
+    char* auxiliarRaza;
+    char* auxiliarReservado;
+    char* auxiliarGenero;
+
+    if(pArrayListCachorro != NULL && path != NULL)
+    {
+        retorno = 1;
+        auxiliarID = malloc(sizeof(int));
+        auxiliarNombre = malloc(sizeof(char)*100);
+        auxiliarDias = malloc(sizeof(int));
+        auxiliarRaza = malloc(sizeof(char)*100);
+        auxiliarReservado= malloc(sizeof(char)*100);
+        auxiliarGenero = malloc(sizeof(char)*100);
+
+        pArchivo = fopen(path, "w");//modo escritura
+        fprintf(pArchivo,"id,nombre,dias,raza,reservado,genero\n");
+
+        for(int i=0; i< ll_len(pArrayListCachorro); i++)
+        {
+            cachorroAux = ll_get(pArrayListCachorro,i);
+            //fwrite(cachorroAux, sizeof(Cachorro),1,pArchivo);
+            cachorro_getId(cachorroAux,auxiliarID);
+            cachorro_getNombre(cachorroAux,auxiliarNombre);
+            cachorro_getDias(cachorroAux, auxiliarDias);
+            cachorro_getRaza(cachorroAux,auxiliarRaza);
+            cachorro_getReservado(cachorroAux,auxiliarReservado);
+            cachorro_getGenero(cachorroAux,auxiliarGenero);
+
+            fprintf(pArchivo,"%d,%s,%d,%s,%s,%s\n",*auxiliarID,auxiliarNombre,*auxiliarDias,auxiliarRaza,auxiliarReservado,auxiliarGenero);
+
+        }
+
+        free(auxiliarNombre); free(auxiliarID); free(auxiliarDias); free(auxiliarRaza);free(auxiliarReservado);free(auxiliarGenero);
+        fclose(pArchivo);
+    }
+    return retorno;
 }

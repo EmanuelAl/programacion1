@@ -22,10 +22,11 @@ int parser_CachorroFromText(FILE* pFile, LinkedList* pArrayListCachorro)
     char auxRaza[30];
     char auxReservado[30];
     char auxGenero[10];
-    char nombre[30];
+
+//    char nombre[30];
 
     int cant;
-    int r;
+  //  int r;
     if(pFile != NULL && pArrayListCachorro!=NULL)
     {
 
@@ -33,7 +34,7 @@ int parser_CachorroFromText(FILE* pFile, LinkedList* pArrayListCachorro)
         while( !feof(pFile))
         {
             cant = fscanf(pFile,"%[^,], %[^,], %[^,], %[^,], %[^,], %[^\n]\n", auxId, auxNombre, auxDias,auxRaza,auxReservado,auxGenero);
-            printf(" %s  %s %s %s %s %s %d ",auxId,auxNombre,auxDias,auxRaza,auxReservado,auxGenero,cant);
+            printf(" %s  %s %s %s %s %s %d \n ",auxId,auxNombre,auxDias,auxRaza,auxReservado,auxGenero,cant);
              //devolvera la cantidad que pudo cargar
             if( cant == 6)//si pudo cargar los 6
             {

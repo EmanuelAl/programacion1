@@ -92,3 +92,47 @@
 
 1574859786 d:\tecnicatura programacion\programacion\programacion1-master\emanuelalderete2ºparcial\parser.h
 
+1575919275 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1575917437 c:\users\emaxd\desktop\emanuelalderete2ºparcial\linkedlist.h
+
+1575998414 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Cachorro.h"
+
+1575936386 c:\users\emaxd\desktop\emanuelalderete2ºparcial\controller.h
+	"LinkedList.h"
+
+1575921578 c:\users\emaxd\desktop\emanuelalderete2ºparcial\cachorro.h
+
+1575919370 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"parser.h"
+	"Cachorro.h"
+
+1574859786 c:\users\emaxd\desktop\emanuelalderete2ºparcial\parser.h
+
+1575922453 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\cachorro.c
+	"Cachorro.h"
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+
+1575998173 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"Controller.h"
+	"LinkedList.h"
+	"Cachorro.h"
+	"parser.h"
+

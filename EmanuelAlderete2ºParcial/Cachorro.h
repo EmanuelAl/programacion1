@@ -6,7 +6,8 @@ typedef struct{
     int dias;
     char raza[50];
     char reservado[10];
-    char genero;
+    char genero[10];
+
 }Cachorro;
 
 #endif
@@ -25,4 +26,6 @@ int cachorro_getReservado(Cachorro* this,char* reservado);
 int cachorro_setGenero(Cachorro* this,char* genero);
 int cachorro_getGenero(Cachorro* this,char* genero);
 
-
+int cachorro_esMenor45Dias(void* element);
+int cachorro_esMacho(void* element);
+int cachorro_esCallejero(void* element);

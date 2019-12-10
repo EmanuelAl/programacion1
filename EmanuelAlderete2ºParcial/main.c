@@ -9,20 +9,19 @@ int main()
 char salir='n';
     int devuelve;
 
-    int abrirTexto = 1;
-    char nombreArchivo;
+   // int abrirTexto = 1;
+   // char nombreArchivo;
 //    int guardarTexto = 0;
 
     LinkedList* listaCachorros = ll_newLinkedList();
+    LinkedList* listaCachorros2 = ll_newLinkedList();
+       LinkedList* listaCachorros3 = ll_newLinkedList();
+       LinkedList* listaCachorros4 = ll_newLinkedList();
     do{
         switch(menu())
         {
             case 1:
 
-                // if (abrirTexto == 1)
-                  //  {
-                  //printf(" ingrese nombre del archivo : ");
-                  //scanf("%s",nombreArchivo);
                 devuelve = controller_loadFromText("cachorros.csv",listaCachorros);
                 if (devuelve == 1)//si lo pudo leer
                 {
@@ -33,68 +32,40 @@ char salir='n';
                     printf("\n Ha ocurrido  un error al abrir el archivo \n\n");
                 }
 
-                    /*}
-                else
-                    {
-                    system("cls");
-                    printf("\n El archivo ya esta abierto \n\n");
-                    }
-//                    guardarTexto = 1;
-                    abrirTexto++;*/
                 break;
             case 2:
 
                    controller_ListCachorro(listaCachorros);
+                    break;
             case 3:
 
+                     listaCachorros2=ll_filter(listaCachorros,cachorro_esMenor45Dias);
+                    if(listaCachorros2!=NULL){
+                        controller_ListCachorro(listaCachorros2);
+                         controller_saveAsText("listaCachorros2.txt",listaCachorros2);// se genera el archivo para los que tienen menos de 45 dias
+                    }
 
+                    break;
             case 4:
-
+                    listaCachorros3=ll_filter(listaCachorros,cachorro_esMacho);
+                    if(listaCachorros3!=NULL){
+                        controller_ListCachorro(listaCachorros3);
+                        controller_saveAsText("listaCachorros3.txt",listaCachorros3);//se genera el archivo para solo machos
+                    }
 
                 break;
             case 5:
 
-
-
-                break;
-            /*case 6:
-                devuelve = controller_ListEmployee(listaEmpleados);
-                if (devuelve == -1)
-                {
-                printf("\n NO EXISTE LA LISTA\n\n");
-                }
-                else
-                    {
-                printf("\n EXISTE LISTA \n\n");
+                     listaCachorros4=ll_filter(listaCachorros,cachorro_esCallejero);
+                    if(listaCachorros4!=NULL){
+                        controller_ListCachorro(listaCachorros4);
                     }
+                   // controller_saveAsText("lista4.txt",listaCachorros4);
+
                 break;
-
-
-                break;
-            case 8:
-                if (guardarTexto == 1)
-            {
-                devuelve = controller_saveAsText("cachorros.csv",listaCachorros);
-                if(devuelve == 1)
-                {
-                    printf("\n Archivo guardado\n\n");
-                }
-                else
-                {
-                    printf("\n No se pudo guardar archivo\n\n");
-                }
-            }
-            else
-            {
-                system("cls");
-                printf("\n Se debe abrir  archivo  primero \n\n");
-            }
-
-
-                break;*/
 
             case 6:
-                printf("confirma salir?¿ \n");
+                printf("confirma salir?s/n \n");
                 fflush(stdin);
                 salir=getchar();
 

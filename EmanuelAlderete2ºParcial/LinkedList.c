@@ -141,7 +141,7 @@ int ll_add(LinkedList* this, void* pElement)
     if(this!=NULL)
     {
         returnAux=addNode(this,ll_len(this),pElement);
-            }
+    }
     return returnAux;
 }
 
@@ -367,7 +367,7 @@ int ll_push(LinkedList* this, int index, void* pElement)
 
     if(this!=NULL )
     {
-       returnAux=addNode(this,index,pElement);//uso la funcion que agrega y crea un nuevo nodo en la posicion indicada
+        returnAux=addNode(this,index,pElement);//uso la funcion que agrega y crea un nuevo nodo en la posicion indicada
     }
 
     return returnAux;
@@ -386,14 +386,15 @@ void* ll_pop(LinkedList* this,int index)
 {
     void* returnAux = NULL;
 
-     if(this!=NULL )
+    if(this!=NULL )
     {
-        if(index>=0 && index<ll_len(this)){
+        if(index>=0 && index<ll_len(this))
+        {
 
-          returnAux=ll_get(this, index);
+            returnAux=ll_get(this, index);
             ll_remove(this, index);
 
-       }
+        }
     }
 
 
@@ -553,36 +554,64 @@ int ll_sort(LinkedList* this, int (*pFunc)(void*,void*), int order)
     if(this!=NULL)
     {
         if (pFunc!= NULL)
-    {
-        if (order == 0 || order == 1)
         {
-            len = ll_len(this);
-            if(len > 0)
+            if (order == 0 || order == 1)
             {
-                do
+                len = ll_len(this);
+                if(len > 0)
                 {
-                    flag = 0;
-                    for(int i=0; i<len-1; i++)
+                    do
                     {
-                        pElementUno = ll_get(this,i);
-                        pElementDos = ll_get(this,i+1);
-
-                        if((pFunc(pElementUno, pElementDos) <0 && order==0) || (pFunc(pElementUno, pElementDos) >0 && order==1))
+                        flag = 0;
+                        for(int i=0; i<len-1; i++)
                         {
-                        pElementAux = pElementUno;
-                        ll_set(this,i,pElementDos);
-                        ll_set(this,i+1,pElementAux);
-                        flag=1;
+                            pElementUno = ll_get(this,i);
+                            pElementDos = ll_get(this,i+1);
+
+                            if((pFunc(pElementUno, pElementDos) <0 && order==0) || (pFunc(pElementUno, pElementDos) >0 && order==1))
+                            {
+                                pElementAux = pElementUno;
+                                ll_set(this,i,pElementDos);
+                                ll_set(this,i+1,pElementAux);
+                                flag=1;
+                            }
+                            returnAux=0;
                         }
-                        returnAux=0;
                     }
-                }while(flag);
+                    while(flag);
+                }
             }
         }
     }
-}
     return returnAux;
 
 }
+LinkedList* ll_filter(LinkedList* this, int (*fn)(void* element))
+{
 
+    LinkedList* listaFiltrada=NULL;
+    int len;
+    if(this!=NULL)
+    {
+        listaFiltrada=ll_newLinkedList();
+        len=ll_len(this);
+        for(int i=0; i<len; i++)
+        {
+
+            void* element=ll_get(this,i);
+            if(element!=NULL)
+            {
+
+                if(fn(element)) //si es 1 se carga el elemento a la lista
+                {
+
+                    ll_add(listaFiltrada,element);
+                }
+            }
+
+        }
+    }
+
+return listaFiltrada;
+}
 

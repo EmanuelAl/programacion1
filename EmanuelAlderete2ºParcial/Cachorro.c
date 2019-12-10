@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 
+
 Cachorro* cachorro_new()//devuelve un puntero
 {
     Cachorro* nuevo = (Cachorro*) malloc( sizeof(Cachorro));
@@ -171,4 +172,51 @@ int cachorro_getGenero(Cachorro* this,char* genero)
         todoOk = 1;
     }
     return todoOk;
+}
+int cachorro_esMenor45Dias(void* element){
+int todoOk=-1;
+int dias;
+
+        cachorro_getDias(element,&dias);
+        if(dias < 45){
+            todoOk=1;
+        }else if(dias > 45){
+            todoOk=0;
+        }
+
+return todoOk;
+}
+
+int cachorro_esMacho(void* element){
+int todoOk=-1;
+char macho[5]="M";
+char hembra[5]="H";
+char genero[10];
+    cachorro_getGenero(element,genero);
+
+            if(strcmp(genero,macho)== 0){
+            todoOk=1;
+        }else if(strcmp(genero,hembra)== 0){
+            todoOk=0;
+        }
+
+
+return todoOk;
+}
+int cachorro_esCallejero(void* element){
+int todoOk=-1;
+        char raza[50];
+       char callejero[50]="callejero";
+
+
+       //strcpy(callejero,"Callejero");
+        cachorro_getRaza(element,raza);
+
+          if(stricmp(raza,callejero)== 0){
+            todoOk=1;
+        }else{
+         todoOk=0;
+        }
+
+return todoOk;
 }
