@@ -92,7 +92,7 @@
 
 1574859786 d:\tecnicatura programacion\programacion\programacion1-master\emanuelalderete2ºparcial\parser.h
 
-1575919275 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\linkedlist.c
+1576017358 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\linkedlist.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -100,7 +100,7 @@
 
 1575917437 c:\users\emaxd\desktop\emanuelalderete2ºparcial\linkedlist.h
 
-1576010453 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\main.c
+1576019334 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -130,7 +130,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1576005605 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\controller.c
+1576017843 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\controller.c
 	<stdio.h>
 	<stdlib.h>
 	"Controller.h"
@@ -138,7 +138,7 @@
 	"Cachorro.h"
 	"parser.h"
 
-1576010453 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\imput.c
+1576019542 source:c:\users\emaxd\desktop\emanuelalderete2ºparcial\imput.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

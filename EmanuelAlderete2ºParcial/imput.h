@@ -58,3 +58,10 @@ int isAlphaNumeric (char str[]);
  */
 
 void  concatenar(char destino[],char str1[],char str2[]);
+/** \brief Funcion para validar que solo se ingrese s/n o S/N
+ *
+ * \return char letra validada
+ *
+ */
+
+char validar();

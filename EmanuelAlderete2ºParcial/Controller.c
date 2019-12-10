@@ -54,11 +54,16 @@ int controller_ListCachorro(LinkedList* pArrayListCachorro)
 
     if(pArrayListCachorro != NULL)
     {
+        if(ll_isEmpty(pArrayListCachorro)==1){//pregunta si esta vacia la lista
 
-        printf("\n\n ID \t  NOMBRE \t DIAS \t\t RAZA \t RESERVADO \t GENERO \n\n");
+            printf(" no hay datos que mostrar \n ");
 
-        for(int i=0; i < ll_len(pArrayListCachorro); i++)
-        {
+        }else if(ll_isEmpty(pArrayListCachorro)==0){//si no esta vacia muestra los datos
+
+            printf("\n\n ID \t  NOMBRE \t DIAS \t\t RAZA \t RESERVADO \t GENERO \n\n");
+
+            for(int i=0; i < ll_len(pArrayListCachorro); i++)
+            {
             cachorro = ll_get(pArrayListCachorro,i);//obtengo el elemento
             cachorro_getNombre(cachorro, nombre);
             cachorro_getId(cachorro,&id);
@@ -68,8 +73,10 @@ int controller_ListCachorro(LinkedList* pArrayListCachorro)
             cachorro_getGenero(cachorro,genero);
 
             printf("%d  %15s %10d %15s %10s %10s \n", id, nombre, dias, raza,reservado,genero);
+                }
+                todoOk=1;
         }
-        todoOk=1;
+
     }
     return todoOk;
 }

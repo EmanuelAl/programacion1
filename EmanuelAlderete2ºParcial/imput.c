@@ -92,3 +92,22 @@ int j=0;
     }
     destino[i+j]='\0';
 }
+char validar(){
+   char letra;
+printf(" confirma salir? s/n \n");
+fflush(stdin);
+scanf("%c",&letra);
+while(!((letra=='S')||(letra=='N') ||(letra=='s')||(letra=='n')))
+{
+printf("\n Ha ingresado opcion no valida...Reintente el ingreso(S/N)\n ");
+fflush(stdin);
+scanf("%c",&letra);
+}
+if(letra=='s' || letra=='S'){
+    letra='s';
+}else if(letra=='s' || letra=='S'){
+    letra='n';
+}
+return letra ;
+
+}

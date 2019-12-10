@@ -41,8 +41,16 @@ char salir='n';
                 break;
             case 2:
 
-                   controller_ListCachorro(listaCachorros);//muestra por pantalla la lista generada
-                    break;
+                   devuelve=controller_ListCachorro(listaCachorros);//muestra por pantalla la lista generada
+                  if (devuelve == -1)
+                    {
+                    printf("\n  LISTA VACIA \n\n");
+                    }
+                    else
+                        {
+                        printf("\n EXISTE LISTA \n\n");
+                        }
+                break;
             case 3:
 
                      listaCachorros2=ll_filter(listaCachorros,cachorro_esMenor45Dias);
@@ -71,9 +79,10 @@ char salir='n';
                 break;
 
             case 6:
-                printf("confirma salir?s/n \n");
-                fflush(stdin);
-                salir=getchar();
+               // printf("confirma salir?s/n \n");
+                // fflush(stdin);
+                //salir=getchar();
+                salir=validar();
 
                 break;
 
