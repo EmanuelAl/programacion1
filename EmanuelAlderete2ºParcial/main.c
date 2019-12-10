@@ -35,13 +35,13 @@ char salir='n';
                 break;
             case 2:
 
-                   controller_ListCachorro(listaCachorros);
+                   controller_ListCachorro(listaCachorros);//muestra por pantalla la lista generada
                     break;
             case 3:
 
                      listaCachorros2=ll_filter(listaCachorros,cachorro_esMenor45Dias);
                     if(listaCachorros2!=NULL){
-                        controller_ListCachorro(listaCachorros2);
+                        controller_ListCachorro(listaCachorros2);//muestra por pantalla la lista generada
                          controller_saveAsText("listaCachorros2.txt",listaCachorros2);// se genera el archivo para los que tienen menos de 45 dias
                     }
 
@@ -49,7 +49,7 @@ char salir='n';
             case 4:
                     listaCachorros3=ll_filter(listaCachorros,cachorro_esMacho);
                     if(listaCachorros3!=NULL){
-                        controller_ListCachorro(listaCachorros3);
+                        controller_ListCachorro(listaCachorros3);//muestra por pantalla la lista generada
                         controller_saveAsText("listaCachorros3.txt",listaCachorros3);//se genera el archivo para solo machos
                     }
 
@@ -58,7 +58,7 @@ char salir='n';
 
                      listaCachorros4=ll_filter(listaCachorros,cachorro_esCallejero);
                     if(listaCachorros4!=NULL){
-                        controller_ListCachorro(listaCachorros4);
+                        controller_ListCachorro(listaCachorros4);//muestra por pantalla la lista generada
                     }
                    // controller_saveAsText("lista4.txt",listaCachorros4);
 

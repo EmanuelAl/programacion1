@@ -4,7 +4,14 @@
 #include "LinkedList.h"
 #include "Cachorro.h"
 #include "parser.h"
-
+/** \brief Carga los datos de los cachorros desde el archivo indicado (modo texto).
+ *
+ * \param path char* ruta del archivo
+ * \param pArrayListCachorro LinkedList* puntero a la lista con la cual se trabajará
+ * \return int (-1)Error: si el puntero a la lista es NULL o el puntero al path es NULL
+                (1) si se pudo realizar la operación
+ *
+ */
 int controller_loadFromText(char* path, LinkedList* pArrayListCachorro)
 {
     int todoOk=-1;
@@ -23,11 +30,12 @@ int controller_loadFromText(char* path, LinkedList* pArrayListCachorro)
 }
 
 
-/** \brief Listar empleados
+/** \brief Listar Cachorros
  *
 
- * \param pArrayListEmployee LinkedList*
- * \return int
+ * \param pArrayListCachorro LinkedList*
+ * \return int (-1)Error: si el puntero a la lista es NULL
+                (1) si todo sale bien
  *
  */
 int controller_ListCachorro(LinkedList* pArrayListCachorro)
@@ -65,6 +73,15 @@ int controller_ListCachorro(LinkedList* pArrayListCachorro)
     }
     return todoOk;
 }
+/** \brief Guarda los datos de los cachorros en el archivo que sea indicado (modo texto).
+ *
+ * \param path char* ruta del archivo
+ * \param pArrayListCachorro LinkedList* puntero a la lista con la cual se trabajará
+ * \return int (-1)Error: si el puntero a la lista es NULL o el puntero al path es NULL
+                (1) si se pudo realizar la operación
+ *
+ *
+ */
 int controller_saveAsText(char* path, LinkedList* pArrayListCachorro)
 {
 

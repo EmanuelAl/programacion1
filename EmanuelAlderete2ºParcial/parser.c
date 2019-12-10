@@ -7,9 +7,10 @@
 
 /** \brief Parsea los datos los datos de los cachorros desde el archivo cachorros.csv (modo texto).
  *
- * \param path char*
- * \param pArrayListCachorro LinkedList*
- * \return int
+* \param FILE* pFile puntero al archivo
+ * \param pArrayListCachorro LinkedList* puntero a la lista con la cual se trabajará
+ * \return int (-1)Error: si el puntero a la lista es NULL o el puntero al archivo es NULL
+                (1) si se pudo realizar la operación
  *
  */
 int parser_CachorroFromText(FILE* pFile, LinkedList* pArrayListCachorro)
