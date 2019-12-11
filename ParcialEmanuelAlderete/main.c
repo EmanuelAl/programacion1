@@ -7,13 +7,14 @@
 #include "color.h"
 #include "auto.h"
 #include "trabajo.h"
+#include "input.h"
 
 #define AUTO 10
 #define MARCA 5
 #define SERV 4
 #define COLOR 5
 #define TRABAJO 5
-#define CLIENTE 5
+#define CLIENTE 10
 int menu();
 
 int main()
@@ -26,12 +27,13 @@ int main()
     eServicio servicios[SERV];
     eCliente clientes[CLIENTE];
     char salir='n';
-     int idAuto=2005;
+     int idAuto=2000;
      int idCliente=0;
      int idTrabajo=0;
 
     inicializarAuto(autos,AUTO);
     inicializarTrabajo(trabajos,TRABAJO);
+    inicializarCliente(clientes,CLIENTE);
     //harcodeos
     hardcodearColores(colores,COLOR,5);
     hardcodearMarcas(marcas,MARCA,5);
@@ -42,14 +44,14 @@ int main()
 
 
 
-do
-    {
+    do{
         switch( menu())
         {
         case 1:
             if(altaAuto( idAuto,idCliente,autos,AUTO, marcas,MARCA,colores,COLOR,clientes,CLIENTE))
             {
                 idAuto++;
+                idCliente++;
             }
             break;
 
@@ -73,7 +75,7 @@ do
             break;
 
         case 4:
-                ordenarAutosMarcaPatente(autos,AUTO);
+                ordenarAutosMarcaPatente2(autos,AUTO,marcas,MARCA);
                 mostrarAutos(autos,AUTO,colores,COLOR,marcas,MARCA,clientes,CLIENTE);
             break;
 
@@ -105,23 +107,28 @@ do
 
             break;
         case 10:
-                mostrarAutoLocalidades(autos,AUTO,marcas,MARCA,colores,COLOR,clientes,CLIENTE);
+                if(mostrarAutoLocalidades(autos,AUTO,marcas,MARCA,colores,COLOR,clientes,CLIENTE)==0){
+                    printf(" no existe esa localidad ");
+                }
              break;
         case 11:
                 mostrarImporteTotal(trabajos,TRABAJO,servicios,SERV,autos,AUTO,clientes,CLIENTE);
              break;
         case 12:
-            printf("Confirma salir?:");
+            /*printf("Confirma salir?:");
             fflush(stdin);
-            salir = getche();
+            salir = getche();*/
+            salir= validar();
             break;
 
         default:
-            printf("\nOpcion Invalida!\n\n");
+            printf("\n Opcion Invalida \n");
+
         }
         system("pause");
     }
     while(salir == 'n');
+
 
     return 0;
 }
@@ -142,10 +149,11 @@ int menu()
     printf("9-Listar trabajos \n\n");
     printf("10-Autos por localidad\n\n");
     printf("11-Importe a pagar\n\n");
-
     printf("12-Salir\n\n");
-    printf("Ingrese opcion: ");
-    scanf("%d", &opcion);
 
+    getNumero(&opcion,"\n Ingrese opcion: "," \n Error.opcion invalida ",1,12);
+    /*printf("Ingrese opcion: ");
+    scanf("%d",&opcion);
+*/
     return opcion;
 }

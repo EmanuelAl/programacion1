@@ -117,15 +117,15 @@ int altaAuto(int id,int idCliente,eAuto vec[],int tamAuto,eMarca marca[],int tam
             gets(patente);
             yaIngresado=buscarAutoPatente(patente,vec,tamAuto);
         }
-
+        altaCliente(idCliente,clientes,tamCliente);//alta de cliente nuevo
         mostrarColores(color,tamColor);
         /*printf("Ingrese id color: ");
         scanf("%d",&idColor);*/
-        getNumeroIntentos(&idColor,"Ingrese id color: ","Error.Ingrese  ID correcto: \n",5000,5004,3);//validamos
+        getNumero(&idColor,"Ingrese id color: ","Error.Ingrese  ID correcto: \n",5000,5004);//validamos
         mostrarMarcas(marca,tamMarca);
         /*printf("Ingrese id Marca: ");
         scanf("%d", &idMarca);*/
-        getNumeroIntentos(&idMarca,"Ingrese id Marca: ","Error.Ingrese  ID correcto: \n",1000,1004,3);
+        getNumero(&idMarca,"Ingrese id Marca: ","Error.Ingrese  ID correcto: \n",1000,1004);
         printf("Ingrese año de modelo : ");
         scanf("%d", &modelo);
 
@@ -184,6 +184,7 @@ int buscarAuto(int idAuto, eAuto vec[], int tam)
     }
     return indice;
 }
+
 eAuto newAuto( int idAuto,
                char patente[],
                int idCliente,
@@ -308,9 +309,9 @@ int buscarAutoPatente(char patente[], eAuto vec[], int tam)
     }
     return indice;
 }
-void mostrarAutoLocalidades( eAuto vec[],int tamAuto,eMarca marca[],int tamMarca,eColor color[],int tamColor,eCliente clientes[],int tamCliente)
+int mostrarAutoLocalidades( eAuto vec[],int tamAuto,eMarca marca[],int tamMarca,eColor color[],int tamColor,eCliente clientes[],int tamCliente)
 {
-
+    int todoOk=0;
     char localidad[20];
     mostrarClientesLocalidad(clientes,tamCliente);
 
@@ -324,15 +325,16 @@ void mostrarAutoLocalidades( eAuto vec[],int tamAuto,eMarca marca[],int tamMarca
         {
             if(vec[i].idCliente==clientes[j].idCliente && vec[i].isEmpty == 0)
             {
-                if( (strcmp(clientes[j].localidad,localidad))==0 )
+                if( (stricmp(clientes[j].localidad,localidad))== 0 )
                 {
                    // mostrarAutos(vec,tamAuto,color,tamColor,marca,tamMarca,clientes,tamCliente);
                     mostrarAuto(vec[i],color,tamColor,marca,tamMarca,clientes,tamCliente);
-
+                    todoOk=1;
                 }
             }
         }
     }
+return todoOk;
 }
 void inicializarAuto(eAuto vec[], int tam)
 {
@@ -360,6 +362,45 @@ void ordenarAutosMarcaPatente( eAuto vec[], int tam)
             }
             // SI TIENEN LA MISMA MARCA LOS ORDENO POR PATENTE ASCENDETE
             else if(  vec[i].idMarca==vec[j].idMarca && strcmp(vec[i].patente,vec[j].patente)>0 && vec[i].isEmpty==0 && vec[j].isEmpty==0)
+            {
+
+                swap = 1;
+            }
+            // SI ENTRO A ALGUNO DE LOS IF ANTERIORES ES PORQUE TENGO QUE SWAPEAR
+            if( swap )
+            {
+
+                aux = vec[i];
+                vec[i] = vec[j];
+                vec[j] = aux;
+            }
+
+            swap = 0;
+        }
+    }
+}
+void ordenarAutosMarcaPatente2( eAuto vec[], int tam,eMarca marcas[],int tamMarca)
+{
+
+    eAuto aux;
+    int swap = 0;
+    char descMarca1[50];
+    char descMarca2[50];
+
+    for(int i=0; i < tam-1; i++)
+    {
+        for(int j = i +1; j < tam; j++)
+        {
+            cargarDescMarca(vec[i].idMarca,marcas,tamMarca,descMarca1);
+            cargarDescMarca(vec[j].idMarca,marcas,tamMarca,descMarca2);
+            // condicion para ordenar por MARCA ascendente
+            //if( vec[i].idMarca>vec[j].idMarca && vec[i].isEmpty==0 && vec[j].isEmpty==0)
+            if( strcmp(descMarca1,descMarca2)>0 && vec[i].isEmpty==0 && vec[j].isEmpty==0)
+            {
+                swap = 1;
+            }
+            // SI TIENEN LA MISMA MARCA LOS ORDENO POR PATENTE ASCENDETE
+            else if(  strcmp(descMarca1,descMarca2)==0 && strcmp(vec[i].patente,vec[j].patente)>0 && vec[i].isEmpty==0 && vec[j].isEmpty==0)
             {
 
                 swap = 1;

@@ -148,14 +148,15 @@ int getStringNumeros(char mensaje[], char input[]);
  int getAlfaNumerico(char mensaje[], char input[]);
 
 
-/** \brief  Funcion usada para verificar el ingreso de caracteres.Chequea para que
- solo sean admitidas las letras S o N.
+/**
+ *\brief Funcion usada para verificar el ingreso de caracteres.Chequea para que solo sean admitidas las letras S o N.
  * \param Se ingresa void
- * \return devuelve un entero sin signo:0 si se ingreso la N y  1 si se ingreso la S
+ *
+ * \return char letra validada
  *
  */
 
-unsigned int verifica(void);
+char validar();
 /** \brief  Funcion usada para verificar el ingreso de caracteres.Chequea para que
  solo sean admitidas las letras A,B,C,D,E,F,G,H,I y  tambien en minusculas
  * \param Se ingresa void

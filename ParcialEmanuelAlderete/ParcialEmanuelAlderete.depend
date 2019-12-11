@@ -134,3 +134,94 @@
 
 1571631211 d:\tecnicatura programacion\programacion\programacion1\parcialemanuelalderete\cliente.h
 
+1576038605 source:d:\tecnicatura programacion\programacion\programacion1-master\parcialemanuelalderete\auto.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"marca.h"
+	"color.h"
+	"servicio.h"
+	"auto.h"
+	"input.h"
+	"cliente.h"
+
+1573658634 d:\tecnicatura programacion\programacion\programacion1-master\parcialemanuelalderete\marca.h
+
+1573658634 d:\tecnicatura programacion\programacion\programacion1-master\parcialemanuelalderete\color.h
+
+1573658634 d:\tecnicatura programacion\programacion\programacion1-master\parcialemanuelalderete\servicio.h
+
+1576038116 d:\tecnicatura programacion\programacion\programacion1-master\parcialemanuelalderete\auto.h
+	"marca.h"
+	"color.h"
+	"cliente.h"
+
+1576038486 d:\tecnicatura programacion\programacion\programacion1-master\parcialemanuelalderete\cliente.h
+
+1576029833 d:\tecnicatura programacion\programacion\programacion1-master\parcialemanuelalderete\input.h
+
+1576036771 source:d:\tecnicatura programacion\programacion\programacion1-master\parcialemanuelalderete\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"cliente.h"
+
+1573658634 source:d:\tecnicatura programacion\programacion\programacion1-master\parcialemanuelalderete\color.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"color.h"
+
+1576029833 source:d:\tecnicatura programacion\programacion\programacion1-master\parcialemanuelalderete\input.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"input.h"
+
+1576038015 source:d:\tecnicatura programacion\programacion\programacion1-master\parcialemanuelalderete\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"servicio.h"
+	"marca.h"
+	"color.h"
+	"auto.h"
+	"trabajo.h"
+	"input.h"
+
+1573658634 d:\tecnicatura programacion\programacion\programacion1-master\parcialemanuelalderete\trabajo.h
+
+1573658634 source:d:\tecnicatura programacion\programacion\programacion1-master\parcialemanuelalderete\marca.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"marca.h"
+
+1573658634 source:d:\tecnicatura programacion\programacion\programacion1-master\parcialemanuelalderete\servicio.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"servicio.h"
+
+1576033322 source:d:\tecnicatura programacion\programacion\programacion1-master\parcialemanuelalderete\trabajo.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"servicio.h"
+	"auto.h"
+	"input.h"
+	"trabajo.h"
+	"marca.h"
+	"color.h"
+

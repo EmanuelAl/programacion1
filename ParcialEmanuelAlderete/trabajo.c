@@ -57,6 +57,7 @@ void mostrarTrabajo(eTrabajo trabajo,eServicio servicio[],int tamS)
     char descServicio[20];
     cargarDescServicio(trabajo.idServicio,servicio,tamS,descServicio);
     printf("  %d      %10s    %s    %02d/%02d/%d \n", trabajo.idTrabajo, trabajo.patente,descServicio,trabajo.fecha.dia,trabajo.fecha.mes,trabajo.fecha.anio);
+    //printf("  %d      %10s    %s    %02d/%02d/%d \n", trabajo.idTrabajo, trabajo.patente,descServicio,trabajo.fecha.dia,trabajo.fecha.mes,trabajo.fecha.anio);
 
 }
 
@@ -103,12 +104,12 @@ int altaTrabajo(eTrabajo vec[], int tam,int idTrabajo,eServicio servicios[], int
         mostrarServicios(servicios,tamS);
         getNumeroIntentos(&idServicio,"Ingrese id de servicio: ","Error.Ingrese  ID correcto: \n",20000,20003,3);//validamos
         printf("Ingrese fecha dd/mm/aaaa: ");
-        scanf("%d %d %d", &fecha.dia, &fecha.mes, &fecha.anio);
+        scanf("%d/%d/%d", &fecha.dia, &fecha.mes, &fecha.anio);
 
 
         vec[indice] = newTrabajo(idTrabajo,patente,idServicio,fecha);
         todoOk = 1;
-        printf("Alta exitosa!!\n\n");
+        printf("Alta exitosa!\n\n");
     }
 
     return todoOk;
@@ -192,7 +193,7 @@ int bajaTrabajo(eTrabajo vec[], int tam,eServicio servicio[],int tamS)
     {
         mostrarTrabajo(vec[indice],servicio,tamS);
 
-        printf("\nConfirma baja?");
+        printf("\nConfirma baja? s/n");
         fflush(stdin);
         scanf("%c", &confirma);
 
@@ -283,13 +284,13 @@ void  mostrarImporteTotal(eTrabajo vec[], int tam,eServicio servicios[], int tam
 {
 
     int idCliente;
-    float total;
+    float total=0;
     mostrarClientes(clientes,tamCliente);
     //printf("Ingrese  id Titular:\n");
     //scanf("%d",&idCliente);
     getNumeroIntentos(&idCliente,"Ingrese  id Titular:\n","Error.Ingrese bien el ID titular",3000,4000,3);
 
-    for(int i=0;i<tamAuto;i++){//recorre vector aautos
+    for(int i=0;i<tamAuto;i++){//recorre vector autos
         for(int j=0;j<tam;j++){//recorre vector trabajos
             for(int y=0;y<tamS;y++){//recorre vector servicios
                 if(autos[i].idCliente==idCliente && autos[i].isEmpty==0){
@@ -304,5 +305,5 @@ void  mostrarImporteTotal(eTrabajo vec[], int tam,eServicio servicios[], int tam
             }
         }
     }
-    printf("El importe total del titular ingresado por id es : %f \n",total);
+    printf("El importe total del titular ingresado por id es : %.2f \n",total);
 }

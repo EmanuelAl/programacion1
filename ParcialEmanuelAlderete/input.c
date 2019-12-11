@@ -81,9 +81,11 @@ int getNumero(int* pResultado,
         if(getInt(&num)==1)
         {
             if(num<=maximo && num>=minimo){
-                 printf(mensajeError);
+                 flag=1;
             }else{
-                flag=1;
+               // system("cls");
+                 printf(mensajeError);
+
             }
         }
 
@@ -209,18 +211,6 @@ int getAlfaNumerico(char mensaje[], char input[])
     }
     return 0;
 }
-unsigned int verifica(void)
-{
-char letra;
-printf("\nIngrese opcion...S/N?");
-letra=toupper(getche());
-while(!((letra=='S')||(letra=='N')))
-{
-printf("\nHa ingresado opci¢n no valida...Reintente el ingreso(S/N)... ");
-letra=toupper(getche());
-}
-return (letra=='S');
-}
 
 char  verificarOpcionSoloLetras(void)
 {
@@ -233,4 +223,24 @@ printf("\nHa ingresado opcion no valida...Reintente el ingreso...\n ");
 letra=toupper(getche());
 }
 return letra;
+}
+
+char validar(){
+   char letra;
+printf(" confirma salir? s/n \n");
+fflush(stdin);
+scanf("%c",&letra);
+while(!((letra=='S')||(letra=='N') ||(letra=='s')||(letra=='n')))
+{
+printf("\n Ha ingresado opcion no valida...Reintente el ingreso(S/N)\n ");
+fflush(stdin);
+scanf("%c",&letra);
+}
+if(letra=='s' || letra=='S'){
+    letra='s';
+}else if(letra=='s' || letra=='S'){
+    letra='n';
+}
+return letra ;
+
 }

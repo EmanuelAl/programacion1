@@ -78,3 +78,55 @@ int cargarDescCliente(int id, eCliente vec[], int tam, char desc[]){
     }
     return todoOk;
 }
+void inicializarCliente(eCliente vec[], int tam)
+{
+    for(int i = 0; i < tam; i++)
+    {
+        vec[i].isEmpty = 1;
+    }
+}
+int buscarLibreCliente(eCliente vec[], int tam)
+{
+    int indice = -1;
+
+    for(int i=0; i < tam; i++)
+    {
+        if( vec[i].isEmpty==1)
+        {
+            indice = i;
+            break;
+        }
+    }
+    return indice;
+}
+int altaCliente( int idCliente,eCliente vec[], int tam){
+ int todoOk = 0;
+ char nombre[50];
+ char localidad[50];
+    int indice;
+         indice = buscarLibreCliente(vec, tam);
+
+    if( indice == -1)
+    {
+        printf("\nSistema completo\n\n");
+    }
+    else
+    {
+        printf("ingrese nombre del titular: ");
+        gets(nombre);
+        printf("ingrese localidad: ");
+        gets(localidad);
+        vec[indice] = newCliente(idCliente,nombre,localidad);
+        todoOk = 1;
+    }
+    return todoOk;
+}
+eCliente newCliente(int idCliente, char nombre[],char localidad[]){
+eCliente aux;
+
+aux.idCliente=idCliente;
+strcpy(aux.nombre,nombre);
+strcpy(aux.localidad,localidad);
+aux.isEmpty=0;
+return aux;
+}

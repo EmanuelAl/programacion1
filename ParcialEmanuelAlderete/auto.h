@@ -184,4 +184,23 @@ eAuto newAuto( int idAuto,
  */
 
 void ordenarAutosMarcaPatente( eAuto vec[], int tam);
-void mostrarAutoLocalidades( eAuto vec[],int tamAuto,eMarca marca[],int tamMarca,eColor color[],int tamColor,eCliente clientes[],int tamCliente);
+/** \brief Muestra los datos de autos de una localidad
+ *  \param int tamAuto es el tamaño de autos
+ * \param eAuto vec[] es el objeto a ser mostrado
+ * \param  eMarca marcas[] vector estructura donde se guardan las marcas
+ * \param int tamMarca tamaño del vector de marcas
+ * \param eColor color[] vector estructura donde se guardan los colores
+ * \param int tamColor tamaño del vector de colores
+ * \param eCliente clientes[] vector estructura donde se guardan los clientes
+ * \param int tamCliente tamaño del vector de clientes
+ * \return (0) si no existe la localidad o (1) si existe muestra los datos
+  */
+int mostrarAutoLocalidades( eAuto vec[],int tamAuto,eMarca marca[],int tamMarca,eColor color[],int tamColor,eCliente clientes[],int tamCliente);
+/** \brief Funcion que ordena al vector por marca y patente
+ *
+ * \param eAuto vec[] vector que se ordenará
+ * \param int tam tamaño del vector
+ * \return no devuelve nada
+ *
+ */
+void ordenarAutosMarcaPatente2( eAuto vec[], int tam,eMarca marcas[],int tamMarca);
