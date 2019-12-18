@@ -1,0 +1,111 @@
+# depslib dependency file v1.0
+1576073287 source:c:\users\alumno\desktop\recup2ªparcial\bicicleta.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"Bicicleta.h"
+
+1576070813 c:\users\alumno\desktop\recup2ªparcial\bicicleta.h
+
+1576070160 source:c:\users\alumno\desktop\recup2ªparcial\imput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"imput.h"
+
+1576070813 c:\users\alumno\desktop\recup2ªparcial\imput.h
+
+1576074337 source:c:\users\alumno\desktop\recup2ªparcial\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1576065436 c:\users\alumno\desktop\recup2ªparcial\linkedlist.h
+
+1576074549 source:c:\users\alumno\desktop\recup2ªparcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Bicicleta.h"
+	"imput.h"
+
+1576069472 c:\users\alumno\desktop\recup2ªparcial\controller.h
+	"LinkedList.h"
+
+1576072639 source:c:\users\alumno\desktop\recup2ªparcial\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"parser.h"
+	"Bicicleta.h"
+
+1576069125 c:\users\alumno\desktop\recup2ªparcial\parser.h
+
+1576069646 source:c:\users\alumno\desktop\recup2ªparcial\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"Controller.h"
+	"LinkedList.h"
+	"Bicicleta.h"
+	"parser.h"
+
+1576591817 source:d:\tecnicatura programacion\programacion\programacion1-master\recup2-¬parcial\bicicleta.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"Bicicleta.h"
+
+1576591817 d:\tecnicatura programacion\programacion\programacion1-master\recup2-¬parcial\bicicleta.h
+
+1576591817 source:d:\tecnicatura programacion\programacion\programacion1-master\recup2-¬parcial\imput.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"imput.h"
+
+1576591817 d:\tecnicatura programacion\programacion\programacion1-master\recup2-¬parcial\imput.h
+
+1576591817 source:d:\tecnicatura programacion\programacion\programacion1-master\recup2-¬parcial\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1576591817 d:\tecnicatura programacion\programacion\programacion1-master\recup2-¬parcial\linkedlist.h
+
+1576591817 source:d:\tecnicatura programacion\programacion\programacion1-master\recup2-¬parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Bicicleta.h"
+	"imput.h"
+
+1576626436 d:\tecnicatura programacion\programacion\programacion1-master\recup2-¬parcial\controller.h
+	"LinkedList.h"
+
+1576626438 source:d:\tecnicatura programacion\programacion\programacion1-master\recup2-¬parcial\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"Controller.h"
+	"LinkedList.h"
+	"Bicicleta.h"
+	"parser.h"
+
+1576626819 d:\tecnicatura programacion\programacion\programacion1-master\recup2-¬parcial\parser.h
+
+1576626822 source:d:\tecnicatura programacion\programacion\programacion1-master\recup2-¬parcial\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"parser.h"
+	"Bicicleta.h"
+
